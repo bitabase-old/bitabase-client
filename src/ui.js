@@ -20,7 +20,7 @@ function createExampleSection () {
 
 module.exports = function (app) {
   const examples = [{
-    title: 'Simple API',
+    title: 'Simple API TESTING',
     description: 'To allow any client, in any language, without any libraries to connect to your database.',
     children: [{
       title: 'Basic Search',
