@@ -1,0 +1,20 @@
+{
+  "name": "bitabase-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify -g uglifyify -t brfs -d ./src/index.js --noparse clone > public/index.bundle.js",
+    "watch": "watchify -t brfs -d -o public/index.bundle.js src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mark Wylde",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "brfs": "^2.0.2",
+    "browserify": "^16.5.0",
+    "fastn": "^2.12.3",
+    "uglifyify": "^5.0.2",
+    "watchify": "^3.11.1"
+  }
+}
