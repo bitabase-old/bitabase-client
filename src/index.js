@@ -1,4 +1,4 @@
-const app = require('./app')()
+const app = require('./app')
 const ui = require('./ui')(app)
 
 ui.attach(app.state)

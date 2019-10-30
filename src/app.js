@@ -1,15 +1,24 @@
 const {mutate} = require('./fastn')
+const routeModule = require('./modules/route')
 
-module.exports = function () {
-  const state = {
-    test: 'hello'
-  }
+const state = {
+  route: window.location.pathname,
+  test: 'hello'
+}
 
-  return {
-    state,
+const {changeRoute} = routeModule({
+  defaultRoute: '/how-it-works'
+}, route => {
+    mutate.set(state, 'route', route)
+})
 
-    changeTest: function () {
-      mutate.set(state, 'test', 'hello again')
-    }
+module.exports = {
+  state,
+  mutate,
+
+  changeRoute,
+
+  changeTest: function () {
+    mutate.set(state, 'test', 'hello again')
   }
 }

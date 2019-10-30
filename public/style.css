@@ -3,6 +3,10 @@ html, *, *:before, *:after  {
   -moz-box-sizing: border-box;
 }
 
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 
 
 .hljs {
@@ -10,7 +14,6 @@ html, *, *:before, *:after  {
 }
 
 body {
-  font-family: arial;
   margin: 0;
   padding: 0;
 }
@@ -20,7 +23,39 @@ h1, h2, h3, h4, p {
   margin: 0 0 10px 0;
 }
 
+.pre {
+  font-family: arial;
+}
 
+.home-art {
+  background-color: white;
+  margin-top: -80px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 10px;
+}
+
+.home-art .container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.jumbo {
+  margin: -10px;
+  padding: 20px 10px 20px 10px;
+  height: 200px;
+  background-color: #4e9a06;
+  color: white;
+}
+
+.jumbo h1 {
+  font-weight: 100;
+  font-size: 40px;
+}
+
+.jumbo p {
+  font-weight: 500;
+}
 
 
 .site-header {
@@ -30,7 +65,9 @@ h1, h2, h3, h4, p {
 }
 
 .site-header .logo {
-  font-weight: 900;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
   margin: 0 20px 0 10px;
 }
 
