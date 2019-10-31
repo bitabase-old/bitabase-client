@@ -17,7 +17,9 @@ module.exports = function (app) {
           return howItWorksPage()
 
         case '/login':
-          return loginPage()
+          return loginPage({
+            login: app.login
+          })
 
         case '/register':
             return registerPage()

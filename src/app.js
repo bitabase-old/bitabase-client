@@ -1,9 +1,10 @@
 const {mutate} = require('./fastn')
+
 const routeModule = require('./modules/route')
+const authModule = require('./modules/auth')
 
 const state = {
-  route: window.location.pathname,
-  test: 'hello'
+  route: window.location.pathname
 }
 
 const {changeRoute} = routeModule({
@@ -17,8 +18,5 @@ module.exports = {
   mutate,
 
   changeRoute,
-
-  changeTest: function () {
-    mutate.set(state, 'test', 'hello again')
-  }
+  ...authModule(state)
 }

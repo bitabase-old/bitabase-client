@@ -1,7 +1,11 @@
-const {fastn} = require('../fastn')
+const {fastn, binding, mutate} = require('../fastn')
 const createHeader = require('../components/header')
 
-function loginPage () {
+const inputSetter = (state, field) =>
+  event => mutate.set(state, field, event.target.value)
+
+function loginPage ({login}) {
+  const loginData = {}
   return fastn('div',
     createHeader(),
 
@@ -13,18 +17,24 @@ function loginPage () {
             fastn('form', {class: 'form'},
               fastn('div', {class: 'form-field'},
                 fastn('label', { for: 'email' }, 'Email Address'),
-                fastn('input', { id: 'email', type: 'email' }),
+                fastn('input', { id: 'email', type: 'email' })
+                  .on('change', inputSetter(loginData, 'email'))
               ),
 
               fastn('div', {class: 'form-field'},
                 fastn('label', { for: 'password'}, 'Password'),
-                fastn('input', { id: 'password', type: 'password' }),
+                fastn('input', { id: 'password', type: 'password' })
+                  .on('change', inputSetter(loginData, 'password'))
               ),
 
               fastn('div', {class: 'form-field'},
                 fastn('button', {class: 'button'}, 'Login')
+                  .on('click', (event) => {
+                    event.preventDefault()
+                    login(loginData)
+                  })
               )
-            )
+            ).attach(loginData)
           ),
 
           fastn('div', { class: 'column-1-3 pad-10' },
