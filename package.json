@@ -6,14 +6,19 @@
   "scripts": {
     "build": "browserify -g uglifyify -t brfs ./src/index.js --noparse clone > public/index.bundle.js",
     "watch": "watchify -t brfs -d -o public/index.bundle.js src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "static ./public",
+    "start": "npm-run-all --parallel watch serve"
   },
   "author": "Mark Wylde",
   "license": "GPL-3.0",
+  "dependencies": {
+    "fastn": "^2.12.3"
+  },
   "devDependencies": {
     "brfs": "^2.0.2",
     "browserify": "^16.5.0",
-    "fastn": "^2.12.3",
+    "node-static": "^0.7.11",
     "uglifyify": "^5.0.2",
     "watchify": "^3.11.1"
   }
