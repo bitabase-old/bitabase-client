@@ -20,6 +20,7 @@
     "browserify": "^16.5.0",
     "node-static": "^0.7.11",
     "npm-run-all": "^4.1.5",
+    "predator": "^1.0.6",
     "uglifyify": "^5.0.2",
     "watchify": "^3.11.1"
   }

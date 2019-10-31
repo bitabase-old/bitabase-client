@@ -14,18 +14,19 @@ module.exports = function (app) {
       switch (route) {
         case '/':
         case '/how-it-works':
-          return howItWorksPage()
+          return howItWorksPage().attach(app.state)
 
         case '/login':
           return loginPage({
-            login: app.login
-          })
+            login: app.login,
+            state: app.state
+          }).attach(app.state)
 
         case '/register':
-            return registerPage()
+            return registerPage().attach(app.state)
 
         default:
-          return notFoundPage()
+          return notFoundPage().attach(app.state)
       }
     }
   })
