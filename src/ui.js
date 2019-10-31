@@ -1,4 +1,4 @@
-const {fastn, binding} = require('./fastn')
+const { fastn, binding } = require('./fastn')
 
 const loginPage = require('./pages/login')
 const registerPage = require('./pages/register')
@@ -8,7 +8,7 @@ const notFoundPage = require('./pages/notFound')
 module.exports = function (app) {
   return fastn('templater', {
     data: binding('route'),
-    template: function (data){
+    template: function (data) {
       const route = data.get('item')
 
       switch (route) {
@@ -23,7 +23,7 @@ module.exports = function (app) {
           }).attach(app.state)
 
         case '/register':
-            return registerPage().attach(app.state)
+          return registerPage().attach(app.state)
 
         default:
           return notFoundPage().attach(app.state)

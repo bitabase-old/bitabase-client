@@ -1,4 +1,4 @@
-const {fastn, binding} = require('../fastn')
+const { fastn, binding } = require('../fastn')
 
 const app = require('../app')
 
@@ -36,19 +36,19 @@ module.exports = function () {
     }]
   }
 
-  return fastn('header', {class: 'site-header'},
+  return fastn('header', { class: 'site-header' },
     fastn('nav',
       fastn('a', {
         href: '/',
         class: 'logo'
       }, 'bitabase'),
-  
+
       fastn('ul:list', {
         class: 'left',
         items: menuItems.left,
         template: createMenuItem
       }),
-  
+
       fastn('ul:list', {
         class: 'right',
         items: menuItems.right,

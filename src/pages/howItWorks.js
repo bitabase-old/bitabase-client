@@ -1,17 +1,17 @@
 const fs = require('fs')
-const {fastn, binding} = require('../fastn')
+const { fastn, binding } = require('../fastn')
 const createHeader = require('../components/header')
 
 function createExampleSection () {
-  return fastn('ul', {class: 'blocks'},
+  return fastn('ul', { class: 'blocks' },
     fastn('li',
       fastn('h2', binding('item.title')),
-      fastn('p', {innerHTML: binding('item.description')}),
+      fastn('p', { innerHTML: binding('item.description') }),
       fastn('pre',
-        fastn('code', {class: 'js'}, binding('item.example'))
-        .on('render', function () {
-          hljs.highlightBlock(this.element)
-        })
+        fastn('code', { class: 'js' }, binding('item.example'))
+          .on('render', function () {
+            hljs.highlightBlock(this.element)
+          })
       )
     )
   )
@@ -78,7 +78,7 @@ function howItWorksPage () {
     fastn('main',
       fastn('div', { class: 'main-sale' },
         fastn('section',
-          fastn('div', {class: 'container'},
+          fastn('div', { class: 'container' },
             fastn('h1', { class: 'logo' }, 'bitabase'),
             fastn('h1', fastn('span', { class: 'highlight' }, 'Give your CRUD a REST'))
           ),
@@ -105,8 +105,8 @@ function howItWorksPage () {
               template: createExampleSection
             })
           )
-        })
-  ))
+      })
+    ))
 }
 
 module.exports = howItWorksPage

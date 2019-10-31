@@ -1,6 +1,6 @@
 const predator = require('predator')
 
-const {fastn, binding, mutate} = require('../fastn')
+const { fastn, binding, mutate } = require('../fastn')
 const createHeader = require('../components/header')
 
 const inputSetter = (state, field) =>
@@ -17,32 +17,32 @@ function getElementWhenMounted (fn) {
   }
 }
 
-function loginPage ({login, state}) {
+function loginPage ({ login, state }) {
   const loginData = {}
   return fastn('div',
     createHeader(),
 
-    fastn('main', 
+    fastn('main',
       fastn('section',
         fastn('div', { class: 'row' },
           fastn('div', { class: 'column-2-3' },
             fastn('h1', 'Login'),
 
-            fastn('div', {display: binding('user')},
+            fastn('div', { display: binding('user') },
               'You are already logged in'
             ),
 
-            fastn('div', {display: binding('user', user => !user)},
-              fastn('form', {class: 'form'},
+            fastn('div', { display: binding('user', user => !user) },
+              fastn('form', { class: 'form' },
 
                 fastn('div', {
                   class: 'form-error',
                   display: binding('errors.login', error => error)
                 },
-                  binding('errors.login')
+                binding('errors.login')
                 ).attach(state),
 
-                fastn('div', {class: 'form-field'},
+                fastn('div', { class: 'form-field' },
                   fastn('label', { for: 'email' }, 'Email Address'),
                   fastn('input', { id: 'email', type: 'email' })
                     .on('change', inputSetter(loginData, 'email'))
@@ -51,14 +51,14 @@ function loginPage ({login, state}) {
                     ))
                 ),
 
-                fastn('div', {class: 'form-field'},
-                  fastn('label', { for: 'password'}, 'Password'),
+                fastn('div', { class: 'form-field' },
+                  fastn('label', { for: 'password' }, 'Password'),
                   fastn('input', { id: 'password', type: 'password' })
                     .on('change', inputSetter(loginData, 'password'))
                 ),
 
-                fastn('div', {class: 'form-field'},
-                  fastn('button', {id: 'loginButton', class: 'button'}, 'Login')
+                fastn('div', { class: 'form-field' },
+                  fastn('button', { id: 'loginButton', class: 'button' }, 'Login')
                     .on('click', (event) => {
                       event.preventDefault()
                       document.getElementById('email').setAttribute('disabled', 'disabled')
@@ -74,7 +74,6 @@ function loginPage ({login, state}) {
                           document.getElementById('email').select()
                         }
                       })
-
                     })
                 )
               ).attach(loginData)
@@ -89,7 +88,7 @@ function loginPage ({login, state}) {
           )
         )
       )
-  ))
+    ))
 }
 
 module.exports = loginPage

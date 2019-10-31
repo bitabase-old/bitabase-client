@@ -1,5 +1,4 @@
 module.exports = function (opts, setRoute) {
-
   document.onclick = function (e) {
     if (e.target.href) {
       const href = e.target.getAttribute('href')
@@ -12,7 +11,7 @@ module.exports = function (opts, setRoute) {
 
   if (window.location.pathname === '/' && opts.defaultRoute !== '/') {
     setRoute(opts.defaultRoute)
-    window.history.pushState({route: opts.defaultRoute}, document.title, opts.defaultRoute)
+    window.history.pushState({ route: opts.defaultRoute }, document.title, opts.defaultRoute)
   }
 
   function changeRoute (newRoute) {
@@ -24,7 +23,7 @@ module.exports = function (opts, setRoute) {
         route = opts.defaultRoute
       }
       setRoute(route)
-      window.history.pushState({route}, document.title, route)
+      window.history.pushState({ route }, document.title, route)
     }
   }
 
