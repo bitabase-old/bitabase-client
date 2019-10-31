@@ -3,11 +3,11 @@ const {fastn, binding} = require('../fastn')
 const createHeader = require('../components/header')
 
 function createExampleSection () {
-  return fastn('ul', {class: 'blocks'}, 
+  return fastn('ul', {class: 'blocks'},
     fastn('li',
       fastn('h2', binding('item.title')),
       fastn('p', {innerHTML: binding('item.description')}),
-      fastn('pre', 
+      fastn('pre',
         fastn('code', {class: 'js'}, binding('item.example'))
         .on('render', function () {
           hljs.highlightBlock(this.element)
@@ -75,10 +75,22 @@ function howItWorksPage () {
   return fastn('div',
     createHeader(),
 
-    fastn('main', 
-      fastn('section',
-        fastn('h1', 'Store your data'),
-        fastn('p', 'No database or server management. Use HTTPS to access your data directly inside your web client.')
+    fastn('main',
+      fastn('div', { class: 'main-sale' },
+        fastn('section',
+          fastn('div', {class: 'container'},
+            fastn('h1', { class: 'logo' }, 'bitabase'),
+            fastn('h1', fastn('span', { class: 'highlight' }, 'Give your CRUD a REST'))
+          ),
+          fastn('h1', 'Easy as..'),
+          fastn('p',
+            fastn('ol',
+              fastn('li', fastn('span', { class: 'highlight' }, 'POST'), ' a schema'),
+              fastn('li', fastn('span', { class: 'highlight' }, 'POST'), ' a record'),
+              fastn('li', fastn('span', { class: 'highlight' }, 'GET'), ' a record')
+            )
+          )
+        )
       ),
 
       fastn('list', {
