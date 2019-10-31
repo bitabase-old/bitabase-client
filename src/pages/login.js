@@ -6,6 +6,17 @@ const createHeader = require('../components/header')
 const inputSetter = (state, field) =>
   event => mutate.set(state, field, event.target.value)
 
+function getElementWhenMounted (fn) {
+  return function () {
+    const timer = setInterval(() => {
+      if (!predator(this.element).hidden) {
+        fn(this.element)
+        clearTimeout(timer)
+      }
+    }, 100)
+  }
+}
+
 function loginPage ({login, state}) {
   const loginData = {}
   return fastn('div',
@@ -35,15 +46,9 @@ function loginPage ({login, state}) {
                   fastn('label', { for: 'email' }, 'Email Address'),
                   fastn('input', { id: 'email', type: 'email' })
                     .on('change', inputSetter(loginData, 'email'))
-                    .on('render', function () {
-                      this.element.focus()
-                      const timer = setInterval(() => {
-                        if (!predator(this.element).hidden) {
-                          this.element.focus()
-                          clearTimeout(timer)
-                        }
-                      }, 100)
-                    })
+                    .on('render', getElementWhenMounted(
+                      (element) => element.focus()
+                    ))
                 ),
 
                 fastn('div', {class: 'form-field'},
