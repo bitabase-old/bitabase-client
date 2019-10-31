@@ -75,10 +75,10 @@ function loginPage ({ login, state }) {
                       event.preventDefault()
                       mutate.set(loginData, 'loading', true)
 
-                      login(loginData, (err) => {
+                      login(loginData, (error) => {
                         mutate.set(loginData, 'loading', false)
 
-                        if (err) {
+                        if (error) {
                           document.getElementById('email').focus()
                           document.getElementById('email').select()
                         }
