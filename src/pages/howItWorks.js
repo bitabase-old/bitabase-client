@@ -19,6 +19,14 @@ function createExampleSection () {
 
 function howItWorksPage () {
   const examples = [{
+    title: 'Admin Endpoints',
+    description: 'Add custom validation and rules to any endpoint in any collection.',
+    children: [{
+      title: 'Create Collection',
+      description: 'All options in a collection are optional except for <strong>id</strong>. If you do not provide a <strong>schema</strong> then any document fields are allowed. If you do not provide any <strong>rules</strong> then anyone can do anything.',
+      example: fs.readFileSync('./src/examples/schema/1.createCollection.js', 'utf8')
+    }]
+  }, {
     title: 'Simple API',
     description: 'To allow any client, in any language, without any libraries to connect to your database.',
     children: [{
@@ -61,14 +69,6 @@ function howItWorksPage () {
       title: 'Manage collection records',
       description: 'As an account owner you can bypass presentors, mutations and rules by using the admin api',
       example: fs.readFileSync('./src/examples/advanced/2.manage.js', 'utf8')
-    }]
-  }, {
-    title: 'Extended Endpoints',
-    description: 'Add custom validation and rules to any endpoint in any collection.',
-    children: [{
-      title: 'Create Collection',
-      description: 'All options in a collection are optional except for <strong>id</strong>. If you do not provide a <strong>schema</strong> then any document fields are allowed. If you do not provide any <strong>rules</strong> then anyone can do anything.',
-      example: fs.readFileSync('./src/examples/schema/1.createCollection.js', 'utf8')
     }]
   }]
 
