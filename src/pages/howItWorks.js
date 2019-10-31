@@ -84,7 +84,7 @@ function howItWorksPage () {
       fastn('list', {
         items: examples,
         template: () =>
-          fastn('div', { class: 'half-float' },
+          fastn('div',
             fastn('h3', binding('item.title')),
             fastn('p', binding('item.description')),
 
