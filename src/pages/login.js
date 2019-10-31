@@ -67,16 +67,16 @@ function loginPage ({ login, state }) {
 
                 fastn('div', { class: 'form-field' },
                   fastn('button', {
-                    id: 'login', 
                     type: 'login',
+                    class: 'button',
                     disabled: binding('loading')
                   }, 'Login')
                     .on('click', (event) => {
                       event.preventDefault()
-                      mutate(formData, 'loading', true)
+                      mutate(loginData, 'loading', true)
 
                       login(loginData, (err) => {
-                        mutate(formData, 'loading', false)
+                        mutate(loginData, 'loading', false)
 
                         if (err) {
                           document.getElementById('email').focus()
