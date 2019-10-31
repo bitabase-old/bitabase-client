@@ -1,6 +1,7 @@
 const fs = require('fs')
 const {fastn, binding} = require('../fastn')
 const createHeader = require('../components/header')
+const createFooter = require('../components/footer')
 
 function createExampleSection () {
   return fastn('ul', {class: 'blocks'},
@@ -105,8 +106,11 @@ function howItWorksPage () {
               template: createExampleSection
             })
           )
-        })
-  ))
+      }),
+    ),
+
+    createFooter()
+  )
 }
 
 module.exports = howItWorksPage

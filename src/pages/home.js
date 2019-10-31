@@ -1,5 +1,6 @@
 const {fastn} = require('../fastn')
 const createHeader = require('../components/header')
+const createFooter = require('../components/footer')
 
 function homePage () {
   return fastn('div',
@@ -19,7 +20,9 @@ function homePage () {
           fastn('p', 'I just know it')
         )
       )
-    )
+    ),
+
+    createFooter(),
   )
 }
 

@@ -159,6 +159,20 @@ span.highlight{
   border: 1px solid white;
 }
 
+/*
+  BOTTOM
+*/
+.site-footer {
+  border-top: 10px solid #333;
+  background: black;
+  color: white;
+}
+
+.site-footer section {
+  padding: 10px;
+  max-width: 1000px;
+  margin: auto;
+}
 
 /*
   LAYOUT
@@ -197,7 +211,7 @@ main {
   margin-right: auto;
 }
 
-main > div, main section{
+main > div, main section {
   max-width: 1000px;
   margin: auto;
 }
