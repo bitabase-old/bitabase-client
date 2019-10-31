@@ -4,4 +4,6 @@ const ui = require('./ui')(app)
 ui.attach(app.state)
 ui.render()
 
-document.body.appendChild(ui.element)
+window.addEventListener('DOMContentLoaded', function () {
+  document.body.appendChild(ui.element)
+))
