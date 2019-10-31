@@ -32,7 +32,7 @@ function registerPage () {
         ),
 
         fastn('div', { class: 'column-6' },
-          fastn('div', 'or login instead')
+          fastn('a', { href: '/login' }, 'or login instead')
         )
       )
   ))
