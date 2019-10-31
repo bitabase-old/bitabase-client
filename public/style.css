@@ -4,29 +4,29 @@ html, *, *:before, *:after  {
 }
 
 body {
+  margin: 0;
+  padding: 0;
   font-family: 'Roboto', sans-serif;
 }
 
-
-
+/*
+  THIRD PARTY
+*/
 .hljs {
   font-size: 100%;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-}
-
+/*
+  TEXT
+*/
 h1, h2, h3, h4, p {
   padding: 0;
   margin: 0 0 10px 0;
 }
 
-.pre {
-  font-family: arial;
-}
-
+/*
+  JUMBO
+*/
 .home-art {
   background-color: white;
   margin-top: -80px;
@@ -57,7 +57,9 @@ h1, h2, h3, h4, p {
   font-weight: 500;
 }
 
-
+/*
+  TOP
+*/
 .site-header {
   background: #333;
   color: white;
@@ -111,13 +113,9 @@ h1, h2, h3, h4, p {
 }
 
 
-
-
-
-
-
-
-
+/*
+  CONTENT
+*/
 main {
   padding: 10px;
   max-width: 1000px;
@@ -139,7 +137,49 @@ ul.blocks {
   padding: 10px;
 }
 
+/*
+  FORMS
+*/
+.form-field {
+  margin-top: 20px;
+}
 
+.form-field label:after {
+  content: ':';
+}
+.form-field label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-field:hover input,
+.form-field input:focus {
+  border: 2px solid black;
+}
+.form-field input {
+  display: block;
+  padding: 10px;
+  width: 100%;
+  border: 2px solid rgb(218, 218, 218);
+  font-size: 100%;
+}
+
+/*
+  BUTTON
+*/
+.button:hover {
+  border: 2px solid black;
+}
+.button {
+  padding: 10px;
+  border: 2px solid rgb(218, 218, 218);
+  font-size: 100%;
+  cursor: pointer;
+}
+
+/*
+  RESPONSIVE
+*/
 @media (min-width: 800px) {
   .site-header nav {
     display: flex;
