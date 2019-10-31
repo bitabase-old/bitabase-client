@@ -3,7 +3,7 @@ module.exports = function (opts, setRoute) {
     if (e.target.href) {
       const href = e.target.getAttribute('href')
       if (href.startsWith('/')) {
-        setRoute(href)
+        changeRoute(href)()
         e.preventDefault()
       }
     }
@@ -33,7 +33,5 @@ module.exports = function (opts, setRoute) {
     }
   })
 
-  return {
-    changeRoute
-  }
+  return changeRoute
 }

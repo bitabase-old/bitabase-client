@@ -8,7 +8,7 @@ const state = {
   route: window.location.pathname
 }
 
-const { changeRoute } = routeModule({
+routeModule({
   defaultRoute: '/how-it-works'
 }, route => {
   mutate.remove(state, 'errors')
@@ -19,6 +19,5 @@ module.exports = {
   state,
   mutate,
 
-  changeRoute,
   ...authModule(state)
 }
