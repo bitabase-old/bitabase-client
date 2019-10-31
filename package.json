@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "browserify -g uglifyify -t brfs -d ./src/index.js --noparse clone > public/index.bundle.js",
+    "build": "browserify -g uglifyify -t brfs ./src/index.js --noparse clone > public/index.bundle.js",
     "watch": "watchify -t brfs -d -o public/index.bundle.js src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
