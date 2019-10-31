@@ -9,9 +9,7 @@ module.exports = function (state) {
         mutate.set(state, 'user', {email})
         callback(null)
       } else {
-        const errorMessage = 'Your email and password combination did not match any existing user'
-  
-        console.log('Will try and login with', email, password)
+        const errorMessage = 'Your email and password combination did not match any existing user. For this demo, try setting the email to "yes"'
   
         mutate.set(state, 'errors.login', errorMessage)
         callback(errorMessage)

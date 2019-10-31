@@ -1,4 +1,15 @@
 module.exports = function (opts, setRoute) {
+
+  document.onclick = function (e) {
+    if (e.target.href) {
+      const href = e.target.getAttribute('href')
+      if (href.startsWith('/')) {
+        setRoute(href)
+        e.preventDefault()
+      }
+    }
+  }
+
   if (window.location.pathname === '/' && opts.defaultRoute !== '/') {
     setRoute(opts.defaultRoute)
     window.history.pushState({route: opts.defaultRoute}, document.title, opts.defaultRoute)

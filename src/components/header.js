@@ -1,17 +1,16 @@
 const {fastn, binding} = require('../fastn')
-const createRoute = require('./route')
 
 const app = require('../app')
 
 function createMenuItem (menuItem) {
+  menuItem = menuItem.get('item')
   return fastn('li',
     fastn('a', {
-      href: menuItem.get('item').href,
-      class: binding('route', 
-          route => route.startsWith(menuItem.get('item').href) ? 'active' : ''
-        ).attach(app.state)
-    }, menuItem.get('item').title)
-    .on('click', app.changeRoute(menuItem.get('item').href))
+      href: menuItem.href,
+      class: binding('route', route =>
+        route.startsWith(menuItem.href) ? 'active' : ''
+      ).attach(app.state)
+    }, menuItem.title)
   )
 }
 
@@ -39,11 +38,10 @@ module.exports = function () {
 
   return fastn('header', {class: 'site-header'},
     fastn('nav',
-      createRoute({
+      fastn('a', {
         href: '/',
-        class: 'logo',
-        title: 'bitabase'
-      }),
+        class: 'logo'
+      }, 'bitabase'),
   
       fastn('ul:list', {
         class: 'left',
