@@ -44,7 +44,11 @@ function loginPage ({ login, state }) {
 
                 fastn('div', { class: 'form-field' },
                   fastn('label', { for: 'email' }, 'Email Address'),
-                  fastn('input', { id: 'email', type: 'email' })
+                  fastn('input', {
+                    id: 'email', 
+                    type: 'email',
+                    disabled: binding('loading')
+                  })
                     .on('change', inputSetter(loginData, 'email'))
                     .on('render', getElementWhenMounted(
                       (element) => element.focus()
@@ -53,22 +57,27 @@ function loginPage ({ login, state }) {
 
                 fastn('div', { class: 'form-field' },
                   fastn('label', { for: 'password' }, 'Password'),
-                  fastn('input', { id: 'password', type: 'password' })
+                  fastn('input', {
+                    id: 'password', 
+                    type: 'password',
+                    disabled: binding('loading')
+                  })
                     .on('change', inputSetter(loginData, 'password'))
                 ),
 
                 fastn('div', { class: 'form-field' },
-                  fastn('button', { id: 'loginButton', class: 'button' }, 'Login')
+                  fastn('button', {
+                    id: 'login', 
+                    type: 'login',
+                    disabled: binding('loading')
+                  }, 'Login')
                     .on('click', (event) => {
                       event.preventDefault()
-                      document.getElementById('email').setAttribute('disabled', 'disabled')
-                      document.getElementById('password').setAttribute('disabled', 'disabled')
-                      document.getElementById('loginButton').setAttribute('disabled', 'disabled')
+                      mutate(formData, 'loading', true)
 
                       login(loginData, (err) => {
-                        document.getElementById('email').removeAttribute('disabled')
-                        document.getElementById('password').removeAttribute('disabled')
-                        document.getElementById('loginButton').removeAttribute('disabled')
+                        mutate(formData, 'loading', false)
+
                         if (err) {
                           document.getElementById('email').focus()
                           document.getElementById('email').select()
