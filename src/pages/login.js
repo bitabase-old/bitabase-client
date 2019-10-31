@@ -31,7 +31,7 @@ function loginPage () {
             fastn('h1', '...or register instead'),
             fastn('p', 'Sign up for a free trial account, with over 10k reads and 1k writes a month.'),
             fastn('p', 'You can upgrade your plan at any time, or pay a simple fixed pricing pay as you go scheme.'),
-            fastn('a', { class: 'button' }, 'Sign up for a free account!')
+            fastn('a', { href: '/register', class: 'button' }, 'Sign up for a free account!')
           )
         )
       )
