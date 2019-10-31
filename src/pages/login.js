@@ -73,10 +73,10 @@ function loginPage ({ login, state }) {
                   }, 'Login')
                     .on('click', (event) => {
                       event.preventDefault()
-                      mutate(loginData, 'loading', true)
+                      mutate.set(loginData, 'loading', true)
 
                       login(loginData, (err) => {
-                        mutate(loginData, 'loading', false)
+                        mutate.set(loginData, 'loading', false)
 
                         if (err) {
                           document.getElementById('email').focus()
