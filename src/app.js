@@ -11,7 +11,7 @@ const state = {
 routeModule({
   defaultRoute: '/how-it-works'
 }, route => {
-  mutate.remove(state, 'errors')
+  mutate.set(state, 'errors', {})
   mutate.set(state, 'route', route)
 })
 
