@@ -5,7 +5,7 @@ function homePage () {
   return fastn('div',
     createHeader(),
 
-    fastn('main', 
+    fastn('main',
       fastn('section', {class: 'jumbo'},
         fastn('div', {class: 'container'},
           fastn('h1', 'End-to-End Database'),
@@ -19,7 +19,8 @@ function homePage () {
           fastn('p', 'I just know it')
         )
       )
-  ))
+    )
+  )
 }
 
 module.exports = homePage
