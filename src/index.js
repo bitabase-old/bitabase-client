@@ -6,4 +6,4 @@ ui.render()
 
 window.addEventListener('DOMContentLoaded', function () {
   document.body.appendChild(ui.element)
-))
+})
