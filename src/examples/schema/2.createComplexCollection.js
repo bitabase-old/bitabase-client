@@ -1,20 +1,35 @@
 const collection = {
-  id: 'people',
+  id: 'users',
 
   // Creating and updating items must conform to this schema
   schema: {
-    firstName: ['required', 'string'],
-    lastName: ['required', 'string'],
-    email: ['required', 'array']
+    username: ['required', 'string'],
+    password: ['required', 'string'],
+    permissions: ['required', 'array']
   },
 
   // These will be run on each record before presenting back to the client
   presenters: [
-    'data.fullname = concat(firstName, " ", lastName)'
+    'delete data.password'
+  ],
+
+  // These will be run on each record before saving to the database
+  mutations: [
+    'data.password = bcrypt(data.password)'
   ],
 
   // You can also set rules for each method
   rules: {
+    POST: [
+      // Allow anyone to register, but only admins to add permissions
+      'data.permissions.length === 0 || user.permissions.includes("admin")'
+    ],
+    PUT: [
+      'user.permissions.includes("admin")'
+    ],
+    PATCH: [
+      'user.permissions.includes("admin")'
+    ],
     DELETE: [
       'error("can not delete people")'
     ]

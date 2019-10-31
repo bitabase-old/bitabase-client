@@ -25,6 +25,10 @@ function howItWorksPage () {
       title: 'Create Collection',
       description: 'All options in a collection are optional except for <strong>id</strong>. If you do not provide a <strong>schema</strong> then any document fields are allowed. If you do not provide any <strong>rules</strong> then anyone can do anything.',
       example: fs.readFileSync('./src/examples/schema/1.createCollection.js', 'utf8')
+    }, {
+      title: 'Create Complex Collection',
+      description: 'Collections can have complex rules to allow for custom business rules. In the example below we create a users table which can be used across any of your collections to login.',
+      example: fs.readFileSync('./src/examples/schema/2.createComplexCollection.js', 'utf8')
     }]
   }, {
     title: 'Simple API',

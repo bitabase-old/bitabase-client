@@ -1,4 +1,4 @@
-const peopleQuery = 'https://example.storest.com/people?location=france&order=-id'
+const peopleQuery = 'https://example.bitabase.com/people?location=france&order=-id'
 const peopleResponse = await fetch(peopleQuery)
 const people = peopleResponse.json()
 

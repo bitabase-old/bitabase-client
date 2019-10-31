@@ -1,4 +1,4 @@
-const peopleQuery = 'https://www.storest.com/collections/users/records'
+const peopleQuery = 'https://www.bitabase.com/collections/users/records'
 const peopleResponse = await fetch(peopleQuery, {
   method: 'POST',
   data: {
@@ -6,7 +6,7 @@ const peopleResponse = await fetch(peopleQuery, {
     password: 'newpassword'
   },
   headers: {
-    username: 'storest_example_account',
+    username: 'bitabase_example_account',
     password: 'secretpassword'
   }
 })

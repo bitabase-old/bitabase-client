@@ -1,4 +1,4 @@
-const newPersonQuery = 'https://example.storest.com/people'
+const newPersonQuery = 'https://example.bitabase.com/people'
 const personResponse = await fetch(newPersonQuery, {
   method: 'POST',
   data: JSON.stringify({
