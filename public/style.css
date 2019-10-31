@@ -12,19 +12,20 @@ html, *, *:before, *:after  {
 
 body {
   font-family: 'Quicksand', sans-serif;
-}
-
-
-
-.hljs {
-  font-size: 100%;
-}
-
-body {
   margin: 0;
   padding: 0;
 }
 
+/*
+  THIRD PARTY
+*/
+.hljs {
+  font-size: 100%;
+}
+
+/*
+  TEXT
+*/
 h1, h2, h3, h4, p {
   padding: 0;
   margin: 0 0 calc(var(--margin) / 2) 0;
@@ -34,10 +35,9 @@ p {
   margin: var(--margin) 0;
 }
 
-.pre {
-  font-family: arial;
-}
-
+/*
+  JUMBO
+*/
 .home-art {
   background-color: white;
   margin-top: -80px;
@@ -68,7 +68,9 @@ p {
   font-weight: 500;
 }
 
-
+/*
+  TOP
+*/
 .site-header {
   background: #eee;
 }
@@ -158,13 +160,9 @@ span.highlight{
 }
 
 
-
-
-
-
-
-
-
+/*
+  CONTENT
+*/
 main {
   padding: var(--padding);
   margin-left: auto;
@@ -190,7 +188,49 @@ ul.blocks {
   box-shadow: 0 10px 50px -45px black;
 }
 
+/*
+  FORMS
+*/
+.form-field {
+  margin-top: 20px;
+}
 
+.form-field label:after {
+  content: ':';
+}
+.form-field label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-field:hover input,
+.form-field input:focus {
+  border: 2px solid black;
+}
+.form-field input {
+  display: block;
+  padding: 10px;
+  width: 100%;
+  border: 2px solid rgb(218, 218, 218);
+  font-size: 100%;
+}
+
+/*
+  BUTTON
+*/
+.button:hover {
+  border: 2px solid black;
+}
+.button {
+  padding: 10px;
+  border: 2px solid rgb(218, 218, 218);
+  font-size: 100%;
+  cursor: pointer;
+}
+
+/*
+  RESPONSIVE
+*/
 @media (min-width: 800px) {
   .site-header nav {
     display: flex;
