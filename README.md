@@ -14,4 +14,4 @@ npm start
 Will watch and serve the client at [localhost:8080](http://localhost:8080)
 
 ## License
-This project is licensed under the terms of the GPLv3 license.
+This project is licensed under the terms of the AGPL license.
