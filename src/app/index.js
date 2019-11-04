@@ -1,7 +1,7 @@
-const { mutate } = require('./fastn')
+const { mutate } = require('../fastn')
 
-const routeModule = require('./modules/route')
-const authModule = require('./modules/auth')
+const routeModule = require('./route')
+const authModule = require('./auth')
 
 const state = {
   errors: {},

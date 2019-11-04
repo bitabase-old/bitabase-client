@@ -1,6 +1,6 @@
 const predator = require('predator')
 
-const { fastn, binding, mutate } = require('../fastn')
+const { fastn, binding, mutate } = require('../../fastn')
 const createHeader = require('../components/header')
 
 const inputSetter = (state, field) =>
@@ -17,10 +17,10 @@ function getElementWhenMounted (fn) {
   }
 }
 
-function loginPage ({ login, state }) {
+function loginPage (app) {
   const loginData = {}
   return fastn('div',
-    createHeader(),
+    createHeader(app),
 
     fastn('main',
       fastn('section',
@@ -40,7 +40,7 @@ function loginPage ({ login, state }) {
                   display: binding('errors.login', error => error)
                 },
                 binding('errors.login')
-                ).attach(state),
+                ).attach(app.state),
 
                 fastn('div', { class: 'form-field' },
                   fastn('label', { for: 'email' }, 'Email Address'),
@@ -75,7 +75,7 @@ function loginPage ({ login, state }) {
                       event.preventDefault()
                       mutate.set(loginData, 'loading', true)
 
-                      login(loginData, (error) => {
+                      app.login(loginData, (error) => {
                         mutate.set(loginData, 'loading', false)
 
                         if (error) {

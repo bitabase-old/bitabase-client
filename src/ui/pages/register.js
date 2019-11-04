@@ -1,9 +1,9 @@
-const { fastn } = require('../fastn')
+const { fastn } = require('../../fastn')
 const createHeader = require('../components/header')
 
-function registerPage () {
+function registerPage (app) {
   return fastn('div',
-    createHeader(),
+    createHeader(app),
 
     fastn('main',
       fastn('section',

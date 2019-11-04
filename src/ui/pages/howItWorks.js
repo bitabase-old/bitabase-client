@@ -1,5 +1,5 @@
 const fs = require('fs')
-const { fastn, binding } = require('../fastn')
+const { fastn, binding } = require('../../fastn')
 const createHeader = require('../components/header')
 
 function createExampleSection () {
@@ -17,18 +17,18 @@ function createExampleSection () {
   )
 }
 
-function howItWorksPage () {
+function howItWorksPage (app) {
   const examples = [{
     title: 'Admin Endpoints',
     description: 'Add custom validation and rules to any endpoint in any collection.',
     children: [{
       title: 'Create Collection',
       description: 'All options in a collection are optional except for <strong>id</strong>. If you do not provide a <strong>schema</strong> then any document fields are allowed. If you do not provide any <strong>rules</strong> then anyone can do anything.',
-      example: fs.readFileSync('./src/examples/schema/1.createCollection.js', 'utf8')
+      example: fs.readFileSync('./src/ui/examples/schema/1.createCollection.js', 'utf8')
     }, {
       title: 'Create Complex Collection',
       description: 'Collections can have complex rules to allow for custom business rules. In the example below we create a users table which can be used across any of your collections to login.',
-      example: fs.readFileSync('./src/examples/schema/2.createComplexCollection.js', 'utf8')
+      example: fs.readFileSync('./src/ui/examples/schema/2.createComplexCollection.js', 'utf8')
     }]
   }, {
     title: 'Simple API',
@@ -36,31 +36,31 @@ function howItWorksPage () {
     children: [{
       title: 'Basic Search',
       description: 'You can filter any collection with a basic filter using the fieldname=value as a condition.',
-      example: fs.readFileSync('./src/examples/basic/1.basicSearch.js', 'utf8')
+      example: fs.readFileSync('./src/ui/examples/basic/1.basicSearch.js', 'utf8')
     }, {
       title: 'Advanced Search',
       description: 'For more complex queries you can use mongo-like syntax.',
-      example: fs.readFileSync('./src/examples/basic/2.advancedSearch.js', 'utf8')
+      example: fs.readFileSync('./src/ui/examples/basic/2.advancedSearch.js', 'utf8')
     }, {
       title: 'Create',
       description: 'Creating a new resource in your collection',
-      example: fs.readFileSync('./src/examples/basic/3.create.js', 'utf8')
+      example: fs.readFileSync('./src/ui/examples/basic/3.create.js', 'utf8')
     }, {
       title: 'Read',
       description: 'Reading an existing resource in your collection',
-      example: fs.readFileSync('./src/examples/basic/4.read.js', 'utf8')
+      example: fs.readFileSync('./src/ui/examples/basic/4.read.js', 'utf8')
     }, {
       title: 'Replace',
       description: 'Replacing all fields on an existing resource in your collection',
-      example: fs.readFileSync('./src/examples/basic/5.replace.js', 'utf8')
+      example: fs.readFileSync('./src/ui/examples/basic/5.replace.js', 'utf8')
     }, {
       title: 'Update',
       description: 'Patching specified fields on an existing resource in your collection',
-      example: fs.readFileSync('./src/examples/basic/6.update.js', 'utf8')
+      example: fs.readFileSync('./src/ui/examples/basic/6.update.js', 'utf8')
     }, {
       title: 'Delete',
       description: 'Deleting an existing resource in your collection',
-      example: fs.readFileSync('./src/examples/basic/7.delete.js', 'utf8')
+      example: fs.readFileSync('./src/ui/examples/basic/7.delete.js', 'utf8')
     }]
   }, {
     title: 'Advanced API',
@@ -68,16 +68,16 @@ function howItWorksPage () {
     children: [{
       title: 'Login to user account',
       description: 'If you have a table called <strong>users</strong> you can login by setting headers',
-      example: fs.readFileSync('./src/examples/advanced/1.login.js', 'utf8')
+      example: fs.readFileSync('./src/ui/examples/advanced/1.login.js', 'utf8')
     }, {
       title: 'Manage collection records',
       description: 'As an account owner you can bypass presentors, mutations and rules by using the admin api',
-      example: fs.readFileSync('./src/examples/advanced/2.manage.js', 'utf8')
+      example: fs.readFileSync('./src/ui/examples/advanced/2.manage.js', 'utf8')
     }]
   }]
 
   return fastn('div',
-    createHeader(),
+    createHeader(app),
 
     fastn('main',
       fastn('div', { class: 'main-sale' },

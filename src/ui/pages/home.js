@@ -1,9 +1,9 @@
-const { fastn } = require('../fastn')
+const { fastn } = require('../../fastn')
 const createHeader = require('../components/header')
 
-function homePage () {
+function homePage (app) {
   return fastn('div',
-    createHeader(),
+    createHeader(app),
 
     fastn('main',
       fastn('section', { class: 'jumbo' },

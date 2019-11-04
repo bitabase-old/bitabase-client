@@ -1,4 +1,4 @@
-const { fastn, binding } = require('./fastn')
+const { fastn, binding } = require('../fastn')
 
 const loginPage = require('./pages/login')
 const registerPage = require('./pages/register')
@@ -14,19 +14,16 @@ module.exports = function (app) {
       switch (route) {
         case '/':
         case '/how-it-works':
-          return howItWorksPage().attach(app.state)
+          return howItWorksPage(app).attach(app.state)
 
         case '/login':
-          return loginPage({
-            login: app.login,
-            state: app.state
-          }).attach(app.state)
+          return loginPage(app).attach(app.state)
 
         case '/register':
-          return registerPage().attach(app.state)
+          return registerPage(app).attach(app.state)
 
         default:
-          return notFoundPage().attach(app.state)
+          return notFoundPage(app).attach(app.state)
       }
     }
   })
