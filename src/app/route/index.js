@@ -2,7 +2,7 @@ module.exports = function (opts, setRoute) {
   document.onclick = function (e) {
     if (e.target.href) {
       const href = e.target.getAttribute('href')
-      if (!href.matches(/.*?\/\//)) {
+      if (href && !href.match(/.*?\/\//)) {
         changeRoute(href)()
         e.preventDefault()
       }
