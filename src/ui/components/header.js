@@ -1,6 +1,6 @@
 const { fastn, binding } = require('../../fastn')
 
-const menuItems = {
+const menuItems = (app) => ({
   left: [{
     href: '/how-it-works',
     title: 'How it works'
@@ -12,14 +12,19 @@ const menuItems = {
     title: 'Support'
   }],
 
-  right: [{
+  notLoggedIn: [{
     href: '/login',
     title: 'Login'
   }, {
     href: '/register',
     title: 'Register'
+  }],
+
+  loggedIn: app.state.user && [{
+    href: '/my-account',
+    title: app.state.user.email
   }]
-}
+})
 
 function createMenuItem (app) {
   return function (menuItem) {
@@ -45,14 +50,19 @@ module.exports = function (app) {
 
       fastn('ul:list', {
         class: 'left',
-        items: menuItems.left,
+        items: menuItems(app).left,
         template: createMenuItem(app)
       }),
 
-      fastn('ul:list', {
-        class: 'right',
-        items: menuItems.right,
-        template: createMenuItem(app)
+      fastn('templater', {
+        data: binding('user'),
+        template: (user) => {
+          return fastn('ul:list', {
+            class: 'right',
+            items: user.get('item') ? menuItems(app).loggedIn : menuItems(app).notLoggedIn,
+            template: createMenuItem(app)
+          })
+        }
       })
     )
   )

@@ -15,9 +15,12 @@ routeModule({
   mutate.set(state, 'route', route)
 })
 
+const auth = authModule(state)
+auth.sync()
+
 module.exports = {
   state,
   mutate,
 
-  ...authModule(state)
+  ...auth
 }

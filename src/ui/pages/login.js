@@ -1,20 +1,42 @@
-const predator = require('predator')
-
 const { fastn, binding, mutate } = require('../../fastn')
 const createHeader = require('../components/header')
+const getElementWhenMounted = require('../utils/getElementWhenMounted')
+const setInputFromEvent = require('../utils/setInputFromEvent')
 
-const inputSetter = (state, field) =>
-  event => mutate.set(state, field, event.target.value)
+function submitLogin (app, data) {
+  return function (event) {
+    event.preventDefault()
+    mutate.set(data, 'loading', true)
 
-function getElementWhenMounted (fn) {
-  return function () {
-    const timer = setInterval(() => {
-      if (!predator(this.element).hidden) {
-        fn(this.element)
-        clearTimeout(timer)
+    app.login(data, (error) => {
+      mutate.set(data, 'loading', false)
+
+      if (error) {
+        document.getElementById('email').focus()
+        document.getElementById('email').select()
       }
-    }, 100)
+    })
   }
+}
+
+function createField ({ type, name, title, focus, data }) {
+  const inputField = fastn('input', {
+    id: name,
+    type: type,
+    disabled: binding('loading')
+  })
+    .on('change', setInputFromEvent(data, name))
+
+  if (focus) {
+    inputField.on('render', getElementWhenMounted(
+      (element) => element.focus()
+    ))
+  }
+
+  return fastn('div', { class: 'form-field' },
+    fastn('label', { for: name }, title),
+    inputField
+  )
 }
 
 function loginPage (app) {
@@ -39,31 +61,28 @@ function loginPage (app) {
                   class: 'form-error',
                   display: binding('errors.login', error => error)
                 },
-                binding('errors.login')
+                'You have not been logged in:',
+                fastn('ul:list', {
+                  items: binding('errors.login'),
+                  template: () =>
+                    fastn('li', binding('item'))
+                })
                 ).attach(app.state),
 
-                fastn('div', { class: 'form-field' },
-                  fastn('label', { for: 'email' }, 'Email Address'),
-                  fastn('input', {
-                    id: 'email', 
-                    type: 'email',
-                    disabled: binding('loading')
-                  })
-                    .on('change', inputSetter(loginData, 'email'))
-                    .on('render', getElementWhenMounted(
-                      (element) => element.focus()
-                    ))
-                ),
+                createField({
+                  type: 'email',
+                  name: 'email',
+                  title: 'Email Address',
+                  focus: true,
+                  data: loginData
+                }),
 
-                fastn('div', { class: 'form-field' },
-                  fastn('label', { for: 'password' }, 'Password'),
-                  fastn('input', {
-                    id: 'password', 
-                    type: 'password',
-                    disabled: binding('loading')
-                  })
-                    .on('change', inputSetter(loginData, 'password'))
-                ),
+                createField({
+                  type: 'password',
+                  name: 'password',
+                  title: 'Password',
+                  data: loginData
+                }),
 
                 fastn('div', { class: 'form-field' },
                   fastn('button', {
@@ -71,19 +90,7 @@ function loginPage (app) {
                     class: 'button',
                     disabled: binding('loading')
                   }, 'Login')
-                    .on('click', (event) => {
-                      event.preventDefault()
-                      mutate.set(loginData, 'loading', true)
-
-                      app.login(loginData, (error) => {
-                        mutate.set(loginData, 'loading', false)
-
-                        if (error) {
-                          document.getElementById('email').focus()
-                          document.getElementById('email').select()
-                        }
-                      })
-                    })
+                    .on('click', submitLogin(app, loginData))
                 )
               ).attach(loginData)
             )
