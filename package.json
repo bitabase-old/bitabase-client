@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "browserify -g uglifyify -t brfs ./src/index.js --noparse clone > public/index.bundle.js",
-    "watch": "watchify -t brfs -d -o public/index.bundle.js src/index.js",
+    "build": "browserify -g uglifyify -t envify -t brfs ./src/index.js --noparse clone > public/index.bundle.js",
+    "watch": "watchify -t envify -t brfs -d -o public/index.bundle.js src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "static ./public --spa index.html",
     "start": "npm-run-all --parallel watch serve"
@@ -23,6 +23,7 @@
     "laidout": "^1.1.0"
   },
   "devDependencies": {
+    "envify": "^4.1.0",
     "brfs": "^2.0.2",
     "browserify": "^16.5.0",
     "node-static": "^0.7.11",

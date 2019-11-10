@@ -8,6 +8,4 @@ const config = {
   }
 }
 
-console.log('NODE_ENV', process.env.NODE_ENV)
-
 module.exports = config[process.env.NODE_ENV || 'dev']
