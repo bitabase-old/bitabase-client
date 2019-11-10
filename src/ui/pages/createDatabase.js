@@ -2,6 +2,7 @@ const spath = require('spath')
 const { fastn, binding, mutate } = require('../../fastn')
 
 const createHeader = require('../components/header')
+const createNotLoggedInSection = require('../components/notLoggedInSection')
 const createFormField = require('../utils/createFormField')
 
 function submitForm (app, data) {
@@ -27,7 +28,11 @@ function createDatabase (app) {
   return fastn('div',
     createHeader(app),
 
-    fastn('main',
+    fastn('main', {display: binding('user', user => !user)}, 
+      createNotLoggedInSection()
+    ),
+
+    fastn('main', {display: binding('user')},
       fastn('section',
         fastn('div', { class: 'row' },
           fastn('div',

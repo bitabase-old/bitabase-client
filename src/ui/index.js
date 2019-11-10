@@ -28,15 +28,9 @@ module.exports = function (app) {
           return registerPage(app).attach(app.state)
 
         case '/my-account':
-          if (!app.state.user) {
-            return spath.setPath('/login')
-          }
           return myAccountPage(app).attach(app.state)
 
         case '/databases/create':
-          if (!app.state.user) {
-            return spath.setPath('/login')
-          }
           return createDatabasePage(app).attach(app.state)
 
         default:

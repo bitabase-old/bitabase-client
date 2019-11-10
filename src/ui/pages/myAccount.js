@@ -1,6 +1,6 @@
 const { fastn, binding } = require('../../fastn')
 const createHeader = require('../components/header')
-
+const createNotLoggedInSection = require('../components/notLoggedInSection')
 const date = require('date-fp')
 
 function myAccount (app) {
@@ -9,7 +9,11 @@ function myAccount (app) {
   return fastn('div',
     createHeader(app),
 
-    fastn('main',
+    fastn('main', {display: binding('user', user => !user)}, 
+      createNotLoggedInSection()
+    ),
+
+    fastn('main', {display: binding('user')},
       fastn('section',
         fastn('h1', 'My Account'),
         fastn('h2', 'Usage'),
