@@ -4,7 +4,7 @@ const config = {
   },
 
   production: {
-    apiServerUrl: 'https://api.bitabase.com'
+    apiServerUrl: 'https://api.bitabase.com/v1'
   }
 }
 
