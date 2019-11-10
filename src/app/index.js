@@ -4,6 +4,7 @@ const onUrlChange = require('on-url-change')
 const { mutate } = require('../fastn')
 
 const authModule = require('./auth')
+const databasesModule = require('./databases')
 
 const state = {
   errors: {},
@@ -24,5 +25,6 @@ module.exports = {
   state,
   mutate,
 
-  ...auth
+  ...auth,
+  ...databasesModule(state)
 }

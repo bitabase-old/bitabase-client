@@ -1,7 +1,9 @@
-const { fastn } = require('../../fastn')
+const { fastn, binding } = require('../../fastn')
 const createHeader = require('../components/header')
 
 function myAccount (app) {
+  app.getDatabases()
+
   return fastn('div',
     createHeader(app),
 
@@ -10,15 +12,21 @@ function myAccount (app) {
         fastn('h1', 'My Account'),
         fastn('h2', 'Usage'),
         fastn('p', 'You have used',
-          fastn('strong', ' 10 reads '),
+          fastn('strong', ' 0 reads '),
           'and',
-          fastn('strong', ' 2 writes ')
+          fastn('strong', ' 0 writes ')
         ),
 
         fastn('h2', 'Databases'),
         fastn('p', 'You have a total of',
-          fastn('strong', ' 10 databases ')
+          fastn('strong', binding(
+            'databases.length', databaseLength => ` ${databaseLength || 0} databases`
+          ))
         ),
+
+        fastn('a', {class: 'button', href: '/databases/create'}, 'Create a new database'),
+
+        fastn('h2', 'Your databases'),
 
         fastn('table', {class: 'table'},
           fastn('thead',
@@ -34,15 +42,23 @@ function myAccount (app) {
           ),
 
           fastn('tbody:list', {
-            items: [1,2,3],
+            items: binding('databases'),
+            emptyTemplate: () =>
+              fastn('tr',
+                fastn('td', {colspan: 100, class: 'text-center'}, 
+                  'You have no databases, why not ',
+                  fastn('a', {href: '/databases/create'}, 'create a new one'),
+                  ' now'
+                )
+              ),
             template: () =>
               fastn('tr',
-                fastn('td', {class: 'grow'}, 'Name'),
-                fastn('td', {class: 'text-center'}, '2'),
-                fastn('td', {class: 'text-center'}, '100'),
-                fastn('td', {class: 'text-center'}, '20'),
-                fastn('td', {class: 'text-center'}, '10gb'),
-                fastn('td', '10 January 2019'),
+                fastn('td', {class: 'grow'}, binding('item.name')),
+                fastn('td', {class: 'text-center'}, binding('item.total_collections')),
+                fastn('td', {class: 'text-center'}, binding('item.total_reads')),
+                fastn('td', {class: 'text-center'}, binding('item.total_writes')),
+                fastn('td', {class: 'text-center'}, binding('item.total_space')),
+                fastn('td', binding('item.date_created')),
                 fastn('td', {class: 'text-right'},
                   fastn('a', { class: 'button button-small', href: '/collections' }, 'View')
                 )
