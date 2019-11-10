@@ -41,20 +41,22 @@ module.exports = function (state) {
       document.cookie = `sessionId=${result.data.sessionId}`
       document.cookie = `sessionSecret=${result.data.sessionSecret}`
 
-      callback(null)
+      callback && callback(null)
+
+      mutate.set(state, 'route', '/my-account')
 
       return
     }
 
     if (result.status === 401) {
       mutate.set(state, 'errors.login', ['email and/or password was wrong'])
-      callback(state.errors.login)
+      callback && callback(state.errors.login)
 
       return
     }
 
     mutate.set(state, 'errors.login', (result.data && result.data.errors) || 'Unknown error')
-    callback(state.errors.login)
+    callback && callback(state.errors.login)
   }
 
   async function register ({ email, password, confirmPassword }, callback) {
@@ -62,7 +64,7 @@ module.exports = function (state) {
 
     if (password !== confirmPassword) {
       mutate.set(state, 'errors.register', ['password and confirmPassword must be the same'])
-      callback(state.errors.register)
+      callback && callback(state.errors.register)
       return
     }
 
@@ -77,14 +79,13 @@ module.exports = function (state) {
     })
 
     if (result.status === 200) {
-      mutate.set(state, 'user', result.data)
-      callback(null)
+      login({email, password}, callback)
 
       return
     }
 
     mutate.set(state, 'errors.login', (result.data && result.data.errors) || 'Unknown error')
-    callback(state.errors.login)
+    callback && callback(state.errors.login)
   }
 
   return {
