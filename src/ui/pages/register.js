@@ -2,6 +2,7 @@ const { fastn, binding, mutate } = require('../../fastn')
 const createHeader = require('../components/header')
 const getElementWhenMounted = require('../utils/getElementWhenMounted')
 const setInputFromEvent = require('../utils/setInputFromEvent')
+const spath = require('spath')
 
 function submitRegister (app, data) {
   return function (event) {
@@ -14,6 +15,8 @@ function submitRegister (app, data) {
       if (error) {
         document.getElementById('email').focus()
         document.getElementById('email').select()
+      } else {
+        spath.setPath('/my-account')
       }
     })
   }

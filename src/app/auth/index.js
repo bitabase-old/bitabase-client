@@ -43,8 +43,6 @@ module.exports = function (state) {
 
       callback && callback(null)
 
-      mutate.set(state, 'route', '/my-account')
-
       return
     }
 

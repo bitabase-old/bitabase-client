@@ -6,6 +6,9 @@ const howItWorksPage = require('./pages/howItWorks')
 const myAccountPage = require('./pages/myAccount')
 const notFoundPage = require('./pages/notFound')
 
+const spath = require('spath')
+document.addEventListener('click', spath.pushStateAnchors)
+
 module.exports = function (app) {
   return fastn('templater', {
     data: binding('route'),
