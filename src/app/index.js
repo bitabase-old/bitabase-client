@@ -14,7 +14,7 @@ const state = {
 document.addEventListener('click', spath.pushStateAnchors)
 
 onUrlChange()
-  .on('change', () => 
+  .on('change', () =>
     mutate.set(state, 'route', window.location.pathname)
   )
 
@@ -26,5 +26,5 @@ module.exports = {
   mutate,
 
   ...auth,
-  ...databasesModule(state)
+  database: databasesModule(state)
 }

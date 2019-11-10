@@ -22,7 +22,34 @@ module.exports = function (state) {
     }
   }
 
+  async function createDatabase (data, callback) {
+    const cookies = getCookies()
+    mutate.remove(state, 'errors.createDatabase')
+
+    const result = await axios('/databases', {
+      method: 'post',
+      data,
+      headers: {
+        'X-Session-Id': cookies.sessionId,
+        'X-Session-Secret': cookies.sessionSecret
+      },
+      baseURL: config.apiServerUrl,
+      validateStatus: status => status < 500 && true
+    })
+
+    if (result.status === 201) {
+      console.log('yay')
+      callback && callback(null, result.data)
+    } else {
+      mutate.set(state, 'errors.createDatabase',
+        (result.data && result.data.errors) || 'Unknown error'
+      )
+      callback && callback(result.data)
+    }
+  }
+
   return {
-    getDatabases
+    getDatabases,
+    createDatabase
   }
 }

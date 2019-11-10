@@ -274,6 +274,12 @@ ul.blocks {
   padding: 10px;
 }
 
+.form-field-error {
+  background-color: #811514;
+  color: white;
+  padding: 5px;
+}
+
 .form-field {
   margin-top: 20px;
 }

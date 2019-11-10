@@ -5,6 +5,7 @@ const registerPage = require('./pages/register')
 const howItWorksPage = require('./pages/howItWorks')
 const myAccountPage = require('./pages/myAccount')
 const notFoundPage = require('./pages/notFound')
+const createDatabasePage = require('./pages/createDatabase')
 
 const spath = require('spath')
 document.addEventListener('click', spath.pushStateAnchors)
@@ -28,6 +29,9 @@ module.exports = function (app) {
 
         case '/my-account':
           return myAccountPage(app).attach(app.state)
+
+        case '/databases/create':
+          return createDatabasePage(app).attach(app.state)
 
         default:
           return notFoundPage(app).attach(app.state)

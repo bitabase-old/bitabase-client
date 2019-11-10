@@ -77,7 +77,7 @@ module.exports = function (state) {
     })
 
     if (result.status === 200) {
-      login({email, password}, callback)
+      login({ email, password }, callback)
 
       return
     }
