@@ -36,7 +36,7 @@ module.exports = function (state) {
     })
 
     if (result.status === 200) {
-      mutate.set(state, 'user', result.data)
+      mutate.set(state, 'user', result.data.user)
 
       document.cookie = `sessionId=${result.data.sessionId}`
       document.cookie = `sessionSecret=${result.data.sessionSecret}`

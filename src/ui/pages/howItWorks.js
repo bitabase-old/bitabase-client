@@ -1,3 +1,5 @@
+/* global hljs */
+
 const fs = require('fs')
 const { fastn, binding } = require('../../fastn')
 const createHeader = require('../components/header')

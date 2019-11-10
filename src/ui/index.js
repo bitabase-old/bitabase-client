@@ -3,6 +3,7 @@ const { fastn, binding } = require('../fastn')
 const loginPage = require('./pages/login')
 const registerPage = require('./pages/register')
 const howItWorksPage = require('./pages/howItWorks')
+const myAccountPage = require('./pages/myAccount')
 const notFoundPage = require('./pages/notFound')
 
 module.exports = function (app) {
@@ -21,6 +22,9 @@ module.exports = function (app) {
 
         case '/register':
           return registerPage(app).attach(app.state)
+
+        case '/my-account':
+          return myAccountPage(app).attach(app.state)
 
         default:
           return notFoundPage(app).attach(app.state)
