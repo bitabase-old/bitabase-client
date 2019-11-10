@@ -38,8 +38,7 @@ function myAccount (app) {
               fastn('th', { class: 'text-center' }, 'Reads'),
               fastn('th', { class: 'text-center' }, 'Writes'),
               fastn('th', { class: 'text-center' }, 'Space'),
-              fastn('th', 'Date Created'),
-              fastn('th', '')
+              fastn('th', 'Date Created')
             )
           ),
 
@@ -55,17 +54,17 @@ function myAccount (app) {
               ),
             template: () =>
               fastn('tr',
-                fastn('td', { class: 'grow' }, binding('item.name')),
+                fastn('td', { class: 'grow' }, 
+                  fastn('strong', binding('item.name')),
+                  fastn('p', binding('item.name', name => `https://${name}.bitabase.com`))
+                ),
                 fastn('td', { class: 'text-center' }, binding('item.total_collections')),
                 fastn('td', { class: 'text-center' }, binding('item.total_reads')),
                 fastn('td', { class: 'text-center' }, binding('item.total_writes')),
                 fastn('td', { class: 'text-center' }, binding('item.total_space')),
                 fastn('td', binding('item.date_created', dateCreated => {
                   return date.format('DD MMMM YYYY, HH:mm:ss', date.fromTime(dateCreated))
-                })),
-                fastn('td', { class: 'text-right' },
-                  fastn('a', { class: 'button button-small', href: '/collections' }, 'View')
-                )
+                }))
               )
           })
         )

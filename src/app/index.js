@@ -1,4 +1,3 @@
-const spath = require('spath')
 const onUrlChange = require('on-url-change')
 
 const { mutate } = require('../fastn')
@@ -11,12 +10,11 @@ const state = {
   route: window.location.pathname
 }
 
-document.addEventListener('click', spath.pushStateAnchors)
-
 onUrlChange()
-  .on('change', () =>
+  .on('change', () => {
+    mutate.set(state, 'errors', {})
     mutate.set(state, 'route', window.location.pathname)
-  )
+  })
 
 const auth = authModule(state)
 auth.sync()
