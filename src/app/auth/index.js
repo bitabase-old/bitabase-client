@@ -25,6 +25,9 @@ module.exports = function (state) {
   async function login ({ email, password }, callback) {
     mutate.remove(state, 'errors.login')
 
+    document.cookie = `sessionId=;expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+    document.cookie = `sessionSecret=;expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+
     const result = await axios('/sessions', {
       method: 'post',
       baseURL: config.apiServerUrl,
@@ -59,6 +62,9 @@ module.exports = function (state) {
 
   async function register ({ email, password, confirmPassword }, callback) {
     mutate.remove(state, 'errors.register')
+
+    document.cookie = `sessionId=;expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+    document.cookie = `sessionSecret=;expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
 
     if (password !== confirmPassword) {
       mutate.set(state, 'errors.register', ['password and confirmPassword must be the same'])
