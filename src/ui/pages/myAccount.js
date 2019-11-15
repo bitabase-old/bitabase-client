@@ -60,7 +60,7 @@ function myAccount (app) {
               fastn('tr',
                 fastn('td', { class: 'grow' }, 
                   fastn('strong', binding('item.name')),
-                  fastn('p', binding('item.name', name => `https://${name}.bitabase.com`))
+                  fastn('p', binding('item.name', name => `https://${name}.bitabase.net`))
                 ),
                 fastn('td', { class: 'text-center' }, binding('item.total_collections')),
                 fastn('td', { class: 'text-center' }, binding('item.total_reads')),

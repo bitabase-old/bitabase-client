@@ -38,7 +38,6 @@ module.exports = function (state) {
     })
 
     if (result.status === 201) {
-      console.log('yay')
       callback && callback(null, result.data)
     } else {
       mutate.set(state, 'errors.createDatabase',
