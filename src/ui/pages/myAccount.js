@@ -17,13 +17,16 @@ function myAccount (app) {
       fastn('section',
         fastn('h1', 'My Account'),
         fastn('h2', 'Your session'),
-        fastn('p', 'Your sessionId is: ',
-          fastn('span', app.state.session.id)
+        fastn('div', { class: 'session-info' },
+          fastn('div', { class: 'session-info' },
+            fastn('div', 'Your sessionId is: '),
+            fastn('input', { readonly: true, value: binding('session.sessionId') })
+          ),
+          fastn('div',
+            fastn('div', 'Your sessionSecret is: '),
+            fastn('input', { readonly: true, value: binding('session.sessionSecret') })
+          )
         ),
-        fastn('p', 'Your sessionSecret is: ',
-          fastn('span', app.state.session.secret)
-        ),
-
         fastn('h2', 'Usage'),
         fastn('p', 'You have used',
           fastn('strong', ' 0 reads '),

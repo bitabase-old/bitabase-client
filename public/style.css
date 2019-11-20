@@ -39,6 +39,36 @@ p {
 }
 
 /*
+  SESSION INFO
+*/
+.session-info div > div:first-child {
+  width: 200px;
+  display: inline-block;
+}
+
+.session-info div:nth-child(2):hover > input:last-child {
+  color: white;
+
+}
+
+.session-info div > input {
+  border: 0;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.session-info div:nth-child(2) > input:last-child {
+  color: grey;
+  display: inline-block;
+  background-color: grey;
+  display: inline-block;
+}
+
+.session-info div > input:last-child {
+  font-weight: 600;
+}
+
+/*
   JUMBO
 */
 .home-art {
