@@ -1,4 +1,4 @@
-const newPersonQuery = 'https://example.bitabase.com/people'
+const newPersonQuery = 'https://example.bitabase.net/people'
 const personResponse = await fetch(newPersonQuery, {
   method: 'POST',
   data: JSON.stringify({

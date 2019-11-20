@@ -1,4 +1,4 @@
-const personQuery = 'https://example.bitabase.com/people/3'
+const personQuery = 'https://example.bitabase.net/people/3'
 const personResponse = await fetch(personQuery, {
   method: 'PATCH',
   data: {

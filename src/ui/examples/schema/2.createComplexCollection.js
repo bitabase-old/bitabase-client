@@ -36,12 +36,12 @@ const collection = {
   }
 }
 
-const newCollectionQuery = 'https://www.bitabase.com/collections'
+const newCollectionQuery = 'https://api.bitabase.net/v1/databases/test/collections'
 const collectionResponse = await fetch(newCollectionQuery, {
   method: 'POST',
   headers: {
-    username: 'bitabase_example_account',
-    password: 'secretpassword'
+    sessionId: 'find in the my account page',
+    sessionSecret: 'find in the my account page'
   },
   data: JSON.stringify(collection)
 })

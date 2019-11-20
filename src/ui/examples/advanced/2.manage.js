@@ -1,4 +1,4 @@
-const peopleQuery = 'https://www.bitabase.com/collections/users/records'
+const peopleQuery = 'https://api.bitabase.net/v1/databases/test/collections/people/records'
 const peopleResponse = await fetch(peopleQuery, {
   method: 'POST',
   data: {
@@ -6,8 +6,8 @@ const peopleResponse = await fetch(peopleQuery, {
     password: 'newpassword'
   },
   headers: {
-    username: 'bitabase_example_account',
-    password: 'secretpassword'
+    sessionId: 'find in the my account page',
+    sessionSecret: 'find in the my account page'
   }
 })
 const people = peopleResponse.json()

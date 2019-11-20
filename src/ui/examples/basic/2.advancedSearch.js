@@ -1,5 +1,5 @@
 const peopleQuery = 
-  'https://example.bitabase.com/people?query={"location":{"$eq":"france"}}'
+  'https://example.bitabase.net/people?query={"location":{"$eq":"france"}}'
 const peopleResponse = await fetch(peopleQuery)
 const people = peopleResponse.json()
 
