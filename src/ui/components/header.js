@@ -8,8 +8,8 @@ const menuItems = (app) => ({
     href: '/pricing',
     title: 'Pricing'
   }, {
-    href: '/support',
-    title: 'Support'
+    href: 'https://community.bitabase.com/',
+    title: 'Community'
   }],
 
   notLoggedIn: [{
