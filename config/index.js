@@ -6,6 +6,6 @@ const config = {
   production: {
     apiServerUrl: 'https://api.bitabase.com/v1'
   }
-}
+};
 
-module.exports = config[process.env.NODE_ENV || 'dev']
+module.exports = config[process.env.NODE_ENV || 'dev'];

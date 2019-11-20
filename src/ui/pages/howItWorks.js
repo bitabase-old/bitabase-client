@@ -1,8 +1,8 @@
 /* global hljs */
 
-const fs = require('fs')
-const { fastn, binding } = require('../../fastn')
-const createHeader = require('../components/header')
+const fs = require('fs');
+const { fastn, binding } = require('../../fastn');
+const createHeader = require('../components/header');
 
 function createExampleSection () {
   return fastn('ul', { class: 'blocks' },
@@ -12,11 +12,11 @@ function createExampleSection () {
       fastn('pre',
         fastn('code', { class: 'js' }, binding('item.example'))
           .on('render', function () {
-            hljs.highlightBlock(this.element)
+            hljs.highlightBlock(this.element);
           })
       )
     )
-  )
+  );
 }
 
 function howItWorksPage (app) {
@@ -76,7 +76,7 @@ function howItWorksPage (app) {
       description: 'As an account owner you can bypass presentors, mutations and rules by using the admin api',
       example: fs.readFileSync('./src/ui/examples/advanced/2.manage.js', 'utf8')
     }]
-  }]
+  }];
 
   return fastn('div',
     createHeader(app),
@@ -112,7 +112,7 @@ function howItWorksPage (app) {
             })
           )
       })
-    ))
+    ));
 }
 
-module.exports = howItWorksPage
+module.exports = howItWorksPage;

@@ -1,9 +1,9 @@
-const app = require('./app')
-const ui = require('./ui')(app)
+const app = require('./app');
+const ui = require('./ui')(app);
 
-ui.attach(app.state)
-ui.render()
+ui.attach(app.state);
+ui.render();
 
 window.addEventListener('DOMContentLoaded', function () {
-  document.body.appendChild(ui.element)
-})
+  document.body.appendChild(ui.element);
+});

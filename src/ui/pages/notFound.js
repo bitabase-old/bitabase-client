@@ -1,5 +1,5 @@
-const { fastn } = require('../../fastn')
-const createHeader = require('../components/header')
+const { fastn } = require('../../fastn');
+const createHeader = require('../components/header');
 
 function notFoundPage (app) {
   return fastn('div',
@@ -10,7 +10,7 @@ function notFoundPage (app) {
         fastn('h1', 'Not Found'),
         fastn('p', 'Whoops! This page doesn\'t exist.')
       )
-    ))
+    ));
 }
 
-module.exports = notFoundPage
+module.exports = notFoundPage;

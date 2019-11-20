@@ -1,4 +1,4 @@
-const { fastn, binding } = require('../../fastn')
+const { fastn, binding } = require('../../fastn');
 
 const menuItems = (app) => ({
   left: [{
@@ -24,11 +24,11 @@ const menuItems = (app) => ({
     href: '/my-account',
     title: app.state.user.email
   }]
-})
+});
 
 function createMenuItem (app) {
   return function (menuItem) {
-    menuItem = menuItem.get('item')
+    menuItem = menuItem.get('item');
     return fastn('li',
       fastn('a', {
         href: menuItem.href,
@@ -36,8 +36,8 @@ function createMenuItem (app) {
           route.startsWith(menuItem.href) ? 'active' : ''
         ).attach(app.state)
       }, menuItem.title)
-    )
-  }
+    );
+  };
 }
 
 module.exports = function (app) {
@@ -61,9 +61,14 @@ module.exports = function (app) {
             class: 'right',
             items: user.get('item') ? menuItems(app).loggedIn : menuItems(app).notLoggedIn,
             template: createMenuItem(app)
-          })
+          });
         }
       })
-    )
-  )
-}
+    ),
+
+    fastn('div', {
+      class: 'alpha-warning'
+    }, fastn('div', 'Bitabase is currently in very early days, and has not reached alpha stage yet. Most endpoints have not been implemented, but features are rapidly being added. Check back frequently for more information.'))
+
+  );
+};

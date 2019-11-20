@@ -1,19 +1,19 @@
-const { fastn, binding } = require('../../fastn')
-const createHeader = require('../components/header')
-const createNotLoggedInSection = require('../components/notLoggedInSection')
-const date = require('date-fp')
+const { fastn, binding } = require('../../fastn');
+const createHeader = require('../components/header');
+const createNotLoggedInSection = require('../components/notLoggedInSection');
+const date = require('date-fp');
 
 function myAccount (app) {
-  app.database.getDatabases()
+  app.database.getDatabases();
 
   return fastn('div',
     createHeader(app),
 
-    fastn('main', {display: binding('user', user => !user)}, 
+    fastn('main', { display: binding('user', user => !user) },
       createNotLoggedInSection()
     ),
 
-    fastn('main', {display: binding('user')},
+    fastn('main', { display: binding('user') },
       fastn('section',
         fastn('h1', 'My Account'),
         fastn('h2', 'Usage'),
@@ -58,7 +58,7 @@ function myAccount (app) {
               ),
             template: () =>
               fastn('tr',
-                fastn('td', { class: 'grow' }, 
+                fastn('td', { class: 'grow' },
                   fastn('strong', binding('item.name')),
                   fastn('p', binding('item.name', name => `https://${name}.bitabase.net`))
                 ),
@@ -67,13 +67,13 @@ function myAccount (app) {
                 fastn('td', { class: 'text-center' }, binding('item.total_writes')),
                 fastn('td', { class: 'text-center' }, binding('item.total_space')),
                 fastn('td', binding('item.date_created', dateCreated => {
-                  return date.format('DD MMMM YYYY, HH:mm:ss', date.fromTime(dateCreated))
+                  return date.format('DD MMMM YYYY, HH:mm:ss', date.fromTime(dateCreated));
                 }))
               )
           })
         )
       )
-    ))
+    ));
 }
 
-module.exports = myAccount
+module.exports = myAccount;

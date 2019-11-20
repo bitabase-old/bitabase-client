@@ -1,25 +1,25 @@
-const { fastn, binding, mutate } = require('../../fastn')
-const createHeader = require('../components/header')
-const getElementWhenMounted = require('../utils/getElementWhenMounted')
-const setInputFromEvent = require('../utils/setInputFromEvent')
-const spath = require('spath')
+const { fastn, binding, mutate } = require('../../fastn');
+const createHeader = require('../components/header');
+const getElementWhenMounted = require('../utils/getElementWhenMounted');
+const setInputFromEvent = require('../utils/setInputFromEvent');
+const spath = require('spath');
 
 function submitLogin (app, data) {
   return function (event) {
-    event.preventDefault()
-    mutate.set(data, 'loading', true)
+    event.preventDefault();
+    mutate.set(data, 'loading', true);
 
     app.login(data, (error) => {
-      mutate.set(data, 'loading', false)
+      mutate.set(data, 'loading', false);
 
       if (error) {
-        document.getElementById('email').focus()
-        document.getElementById('email').select()
+        document.getElementById('email').focus();
+        document.getElementById('email').select();
       } else {
-        spath.setPath('/my-account')
+        spath.setPath('/my-account');
       }
-    })
-  }
+    });
+  };
 }
 
 function createField ({ type, name, title, focus, data }) {
@@ -28,22 +28,22 @@ function createField ({ type, name, title, focus, data }) {
     type: type,
     disabled: binding('loading')
   })
-    .on('change', setInputFromEvent(data, name))
+    .on('change', setInputFromEvent(data, name));
 
   if (focus) {
     inputField.on('render', getElementWhenMounted(
       (element) => element.focus()
-    ))
+    ));
   }
 
   return fastn('div', { class: 'form-field' },
     fastn('label', { for: name }, title),
     inputField
-  )
+  );
 }
 
 function loginPage (app) {
-  const loginData = {}
+  const loginData = {};
   return fastn('div',
     createHeader(app),
 
@@ -107,7 +107,7 @@ function loginPage (app) {
           )
         )
       )
-    ))
+    ));
 }
 
-module.exports = loginPage
+module.exports = loginPage;

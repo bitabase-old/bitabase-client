@@ -1,5 +1,5 @@
-const { fastn } = require('../../fastn')
-const createHeader = require('../components/header')
+const { fastn } = require('../../fastn');
+const createHeader = require('../components/header');
 
 function homePage (app) {
   return fastn('div',
@@ -20,7 +20,7 @@ function homePage (app) {
         )
       )
     )
-  )
+  );
 }
 
-module.exports = homePage
+module.exports = homePage;

@@ -1,12 +1,12 @@
-const laidout = require('laidout')
+const laidout = require('laidout');
 
 function getElementWhenMounted (fn) {
   return function () {
-    const element = this.element
+    const element = this.element;
     laidout(element, function () {
-      fn(element)
-    })
-  }
+      fn(element);
+    });
+  };
 }
 
-module.exports = getElementWhenMounted
+module.exports = getElementWhenMounted;

@@ -1,8 +1,8 @@
 const getCookies = () =>
   document.cookie.split('; ').reduce((prev, current) => {
-    const [name, value] = current.split('=')
-    prev[name] = value
-    return prev
-  }, {})
+    const [name, value] = current.split('=');
+    prev[name] = value;
+    return prev;
+  }, {});
 
-module.exports = getCookies
+module.exports = getCookies;
