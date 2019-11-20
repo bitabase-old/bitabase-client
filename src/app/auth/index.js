@@ -19,6 +19,10 @@ module.exports = function (state) {
       });
 
       mutate.set(state, 'user', result.data.user);
+      mutate.set(state, 'session', {
+        sessionId: cookies.sessionId,
+        sessionSecret: cookies.sessionSecret
+      });
     }
   }
 
@@ -40,6 +44,10 @@ module.exports = function (state) {
 
     if (result.status === 200) {
       mutate.set(state, 'user', result.data.user);
+      mutate.set(state, 'session', {
+        sessionId: result.data.sessionId,
+        sessionSecret: result.data.sessionSecret
+      });
 
       document.cookie = `sessionId=${result.data.sessionId}`;
       document.cookie = `sessionSecret=${result.data.sessionSecret}`;

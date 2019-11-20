@@ -16,6 +16,14 @@ function myAccount (app) {
     fastn('main', { display: binding('user') },
       fastn('section',
         fastn('h1', 'My Account'),
+        fastn('h2', 'Your session'),
+        fastn('p', 'Your sessionId is: ',
+          fastn('span', app.state.session.id)
+        ),
+        fastn('p', 'Your sessionSecret is: ',
+          fastn('span', app.state.session.secret)
+        ),
+
         fastn('h2', 'Usage'),
         fastn('p', 'You have used',
           fastn('strong', ' 0 reads '),
