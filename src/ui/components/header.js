@@ -68,7 +68,7 @@ module.exports = function (app) {
 
     fastn('div', {
       class: 'alpha-warning'
-    }, fastn('div', 'Bitabase is currently in very early days, and has not reached alpha stage yet. Most endpoints have not been implemented, but features are rapidly being added. Check back frequently for more information.'))
+    }, fastn('div', 'Bitabase is currently in the very early stages of development. It has not reached alpha stage yet. Most endpoints have not been implemented, but features are rapidly being added. Check back frequently for more information.'))
 
   );
 };
