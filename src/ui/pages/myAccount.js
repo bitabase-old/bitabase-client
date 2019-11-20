@@ -29,9 +29,9 @@ function myAccount (app) {
         ),
         fastn('h2', 'Usage'),
         fastn('p', 'You have used',
-          fastn('strong', ' 0 reads '),
-          'and',
-          fastn('strong', ' 0 writes ')
+          fastn('strong', binding(
+            'stats.totalReads', 'stats.totalWrites', (totalReads, totalWrites) => ` ${totalReads || 0} reads and ${totalWrites || 0} writes `
+          ))
         ),
 
         fastn('h2', 'Databases'),
