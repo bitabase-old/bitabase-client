@@ -5,33 +5,25 @@ const getCookies = require('../utils/getCookies');
 
 module.exports = function (state) {
   async function sync () {
-    setTimeout(() => {
-      mutate.set(state, 'session', {
-        sessionId: 'xxxfgsefgewrgewfgsef',
-        sessionSecret: 'xxgsdfgsdfgsdfgsdfgx'
+    const cookies = getCookies();
+
+    if (cookies.sessionId && cookies.sessionSecret) {
+      const result = await axios('/sessions/current', {
+        method: 'get',
+        headers: {
+          'X-Session-Id': cookies.sessionId,
+          'X-Session-Secret': cookies.sessionSecret
+        },
+        baseURL: config.apiServerUrl,
+        validateStatus: status => status < 500 && true
       });
-      mutate.set(state, 'user', { a: 1 });
-    }, 100);
 
-    // const cookies = getCookies();
-
-    // if (cookies.sessionId && cookies.sessionSecret) {
-    //   const result = await axios('/sessions/current', {
-    //     method: 'get',
-    //     headers: {
-    //       'X-Session-Id': cookies.sessionId,
-    //       'X-Session-Secret': cookies.sessionSecret
-    //     },
-    //     baseURL: config.apiServerUrl,
-    //     validateStatus: status => status < 500 && true
-    //   });
-
-    //   mutate.set(state, 'user', result.data.user);
-    //   mutate.set(state, 'session', {
-    //     sessionId: cookies.sessionId,
-    //     sessionSecret: cookies.sessionSecret
-    //   });
-    // }
+      mutate.set(state, 'user', result.data.user);
+      mutate.set(state, 'session', {
+        sessionId: cookies.sessionId,
+        sessionSecret: cookies.sessionSecret
+      });
+    }
   }
 
   async function login ({ email, password }, callback) {
