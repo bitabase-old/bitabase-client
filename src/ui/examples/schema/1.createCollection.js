@@ -10,13 +10,13 @@ const collection = {
 
   // These will be run on each record before presenting back to the client
   presenters: [
-    'data.fullname = concat(firstName, " ", lastName)'
+    '{fullname: concat(firstName, " ", lastName)}'
   ],
 
   // You can also set rules for each method
   rules: {
     DELETE: [
-      'error("can not delete people")'
+      '"can not delete people"'
     ]
   }
 }
