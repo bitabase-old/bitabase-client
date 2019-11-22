@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Quicksand";
+  src: url("/fonts/ofl-quicksand/static/Quicksand-Medium.ttf");
+}
+
 html, *, *:before, *:after  {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -11,7 +16,7 @@ html, *, *:before, *:after  {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   margin: 0;
   padding: 0;
 }
