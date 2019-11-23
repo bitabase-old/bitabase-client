@@ -21,11 +21,11 @@ module.exports = function (state) {
       let totalReads = 0;
       let totalWrites = 0;
       result.data.forEach(database => {
-        totalReads = totalReads + database.total_reads
-        totalWrites = totalWrites + database.total_writes
-      })
+        totalReads = totalReads + database.total_reads;
+        totalWrites = totalWrites + database.total_writes;
+      });
 
-      mutate.set(state, 'stats', {totalReads, totalWrites});
+      mutate.set(state, 'stats', { totalReads, totalWrites });
 
       mutate.set(state, 'databases', result.data);
     }

@@ -10,6 +10,9 @@ const menuItems = (app) => ({
   }, {
     href: 'https://community.bitabase.com/',
     title: 'Community'
+  }, {
+    href: 'https://docs.bitabase.com',
+    title: 'Documentation'
   }],
 
   notLoggedIn: [{
