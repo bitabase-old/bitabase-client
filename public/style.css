@@ -160,9 +160,9 @@ p {
 .alpha-warning > div {
   max-width: 1000px;
   margin: auto;
-  padding: 10px 0 10px 0;
 }
 .alpha-warning {
+  padding: 10px;
   background-color: #a00e0e;
   color: white;
 }

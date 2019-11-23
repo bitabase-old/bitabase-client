@@ -20,6 +20,10 @@ const collection = {
 
   // You can also set rules for each method
   rules: {
+    AUTH: [
+      'verifyHash(body.password record.password) ? "" : "Login Failed"'
+    ],
+
     POST: [
       // Allow anyone to register, but only admins to add permissions
       'length(data.permissions) === 0 || includes("admin", user.permissions)'
