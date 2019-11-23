@@ -10,7 +10,7 @@ const collection = {
 
   // These will be run on each record before presenting back to the client
   presenters: [
-    '{...data fullname: concat(data.firstName " " data.lastName)}'
+    '{...record fullname: concat(record.firstName " " record.lastName)}'
   ],
 
   // You can also set rules for each method

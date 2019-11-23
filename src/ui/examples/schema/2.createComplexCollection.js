@@ -10,12 +10,12 @@ const collection = {
 
   // These will be run on each record before presenting back to the client
   presenters: [
-    '{...data password: undefined}'
+    '{...record password: undefined}'
   ],
 
   // These will be run on each record before saving to the database
   mutations: [
-    '{...data password: hashText(data.password)}'
+    '{...body password: hashText(body.password)}'
   ],
 
   // You can also set rules for each method
