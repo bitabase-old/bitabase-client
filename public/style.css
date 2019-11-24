@@ -415,14 +415,14 @@ ul.blocks {
   }
 
   .collapsable .burger-menu {
-    height: 0px;
+    max-height: 0px;
     overflow: hidden;
   }
 
   .collapsable:active .burger-menu,
   .collapsable:focus .burger-menu {
     display: inherit;
-    height: 50vh;
+    max-height: 500px;
   }
 
   .site-header .logo {
