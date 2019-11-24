@@ -433,6 +433,7 @@ ul.blocks {
   }
 
   .collapsable:active .burger-menu,
+  .collapsable:focus-within .burger-menu,
   .collapsable:focus .burger-menu {
     display: inherit;
     max-height: 500px;
