@@ -378,6 +378,10 @@ ul.blocks {
 /*
   RESPONSIVE
 */
+.collapsable {
+  outline: none;
+}
+
 .collapsable .collapsable-expand:hover {
   color: black;
 }
@@ -399,14 +403,20 @@ ul.blocks {
   vertical-align: text-bottom;
 }
 
+.collapsable .burger-menu {
+  transition: 0.5s all ease-out;
+}
+
 @media (max-width: 800px) {
   .collapsable .burger-menu {
-    display: none;
+    height: 0px;
+    overflow: hidden;
   }
 
   .collapsable:active .burger-menu,
   .collapsable:focus .burger-menu {
     display: inherit;
+    height: 50vh;
   }
 
   .site-header .logo {
@@ -415,7 +425,7 @@ ul.blocks {
 }
 
 @media (min-width: 800px) {
-  .collapsable-expand {
+  .collapsable .collapsable-expand {
     display: none;
   }
   .collapsable .burger-menu {
