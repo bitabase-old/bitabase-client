@@ -405,12 +405,12 @@ ul.blocks {
 }
 
 .collapsable .burger-menu {
-  transition: 0.5s all ease-out;
+  transition: 0.3s all ease;
 }
 
 @media (max-width: 800px) {
-  .collapsable:active li,
-  .collapsable:focus li {
+  .collapsable li,
+  .collapsable li {
     display: block !important;
   }
 
