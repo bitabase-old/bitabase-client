@@ -378,13 +378,15 @@ ul.blocks {
 /*
   RESPONSIVE
 */
-.collapsable {
-  outline: none;
-}
-
 .collapsable .collapsable-expand:hover {
   color: black;
 }
+
+.collapsable:active li,
+.collapsable:focus li {
+  display: block !important;
+}
+
 .collapsable:active .collapsable-expand,
 .collapsable:focus .collapsable-expand {
   color: black;
@@ -392,7 +394,8 @@ ul.blocks {
   font-size: 1px;
   margin: 0px;
 }
-.site-header .collapsable-expand {
+.collapsable-expand {
+  outline: none;
   transition: 0.5s all ease-out;
   cursor: pointer;
   color: #848484;
