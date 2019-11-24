@@ -7,7 +7,7 @@
     "build": "browserify -g uglifyify -t envify -t brfs ./src/index.js --noparse clone > public/index.bundle.js",
     "watch": "watchify -t envify -t brfs -d -o public/index.bundle.js src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "static ./public --spa index.html",
+    "serve": "static ./public -a 0.0.0.0 --spa index.html",
     "start": "npm-run-all --parallel watch serve"
   },
   "standard": {
