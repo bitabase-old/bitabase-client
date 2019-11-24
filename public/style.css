@@ -382,17 +382,15 @@ ul.blocks {
   color: black;
 }
 
-.collapsable:active li,
-.collapsable:focus li {
-  display: block !important;
-}
-
 .collapsable:active .collapsable-expand,
 .collapsable:focus .collapsable-expand {
   color: black;
   transform: rotate(-90deg);
   font-size: 1px;
   margin: 0px;
+}
+.collapsable {
+  outline: none;
 }
 .collapsable-expand {
   outline: none;
@@ -411,6 +409,11 @@ ul.blocks {
 }
 
 @media (max-width: 800px) {
+  .collapsable:active li,
+  .collapsable:focus li {
+    display: block !important;
+  }
+
   .collapsable .burger-menu {
     height: 0px;
     overflow: hidden;
