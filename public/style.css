@@ -415,6 +415,9 @@ ul.blocks {
 }
 
 @media (min-width: 800px) {
+  .collapsable-expand {
+    display: none;
+  }
   .collapsable .burger-menu {
     flex: auto;
     display: flex;
