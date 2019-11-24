@@ -378,8 +378,50 @@ ul.blocks {
 /*
   RESPONSIVE
 */
+.collapsable .collapsable-expand:hover {
+  color: black;
+}
+.collapsable:active .collapsable-expand,
+.collapsable:focus .collapsable-expand {
+  color: black;
+  transform: rotate(-90deg);
+  font-size: 1px;
+  margin: 0px;
+}
+.site-header .collapsable-expand {
+  transition: 0.5s all ease-out;
+  cursor: pointer;
+  color: #848484;
+  margin-left: 10px;
+  margin-right: 5px;
+  font-size: 28px;
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+@media (max-width: 800px) {
+  .collapsable .burger-menu {
+    display: none;
+  }
+
+  .collapsable:active .burger-menu,
+  .collapsable:focus .burger-menu {
+    display: inherit;
+  }
+
+  .site-header .logo {
+    margin: 0 0 0 10px;
+  }
+}
+
 @media (min-width: 800px) {
-  .site-header nav {
+  .collapsable .burger-menu {
+    flex: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .site-header .collapsable {
     display: flex;
     align-items: center;
   }

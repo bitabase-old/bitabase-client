@@ -45,28 +45,32 @@ function createMenuItem (app) {
 
 module.exports = function (app) {
   return fastn('header', { class: 'site-header' },
-    fastn('nav',
+    fastn('div', {class:'collapsable', tabindex: 0},
+      fastn('div', {class: 'collapsable-expand', innerHTML: '&#9776;'}),
+
       fastn('a', {
         href: '/',
         class: 'logo'
       }, 'bitabase'),
 
-      fastn('ul:list', {
-        class: 'left',
-        items: menuItems(app).left,
-        template: createMenuItem(app)
-      }),
+      fastn('div', {class: 'burger-menu'},
+        fastn('ul:list', {
+          class: 'left',
+          items: menuItems(app).left,
+          template: createMenuItem(app)
+        }),
 
-      fastn('templater', {
-        data: binding('user'),
-        template: (user) => {
-          return fastn('ul:list', {
-            class: 'right',
-            items: user.get('item') ? menuItems(app).loggedIn : menuItems(app).notLoggedIn,
-            template: createMenuItem(app)
-          });
-        }
-      })
+        fastn('templater', {
+          data: binding('user'),
+          template: (user) => {
+            return fastn('ul:list', {
+              class: 'right',
+              items: user.get('item') ? menuItems(app).loggedIn : menuItems(app).notLoggedIn,
+              template: createMenuItem(app)
+            });
+          }
+        })
+      )
     ),
 
     fastn('div', {
