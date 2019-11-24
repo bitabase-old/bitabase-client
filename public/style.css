@@ -409,9 +409,22 @@ ul.blocks {
 }
 
 @media (max-width: 800px) {
+  html, *, *:before, *:after  {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+
+    --padding: 10px;
+    --margin: 5px;
+
+  }
+
   .collapsable li,
+  .collapsable li a,
   .collapsable li {
     display: block !important;
+  }
+  .collapsable li a {
+    padding: 20px;
   }
 
   .collapsable .burger-menu {
