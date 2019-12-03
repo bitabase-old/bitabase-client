@@ -13,6 +13,22 @@ function myAccount (app) {
       createNotLoggedInSection()
     ),
 
+    fastn('modal', { display: binding('activeLogs') },
+      fastn('div', { class: 'modal-head' },
+        fastn('button', 'close')
+          .on('click', async function (event, collection) {
+            app.database.clearLogs();
+          })
+      ),
+      fastn('div', { class: 'modal-body' },
+        fastn('pre',
+          fastn('code',
+            binding('activeLogs', logs => JSON.stringify(logs, null, 2))
+          )
+        )
+      )
+    ),
+
     fastn('main', { display: binding('user') },
       fastn('section',
         fastn('h1', 'My Account'),
@@ -71,7 +87,17 @@ function myAccount (app) {
               fastn('tr',
                 fastn('td', { class: 'grow' },
                   fastn('strong', binding('item.name')),
-                  fastn('p', binding('item.name', name => `https://${name}.bitabase.net`))
+                  fastn('p', binding('item.name', name => `https://${name}.bitabase.net`)),
+                  fastn('p:list', {
+                    items: binding('item.collections'),
+                    template: () =>
+                      fastn('li',
+                        fastn('a', { href: '#' }, binding('item.name'))
+                          .on('click', async function (event, collection) {
+                            app.database.switchLogs(collection.get('item'));
+                          })
+                      )
+                  })
                 ),
                 fastn('td', { class: 'text-center' }, binding('item.total_collections')),
                 fastn('td', { class: 'text-center' }, binding('item.total_reads')),

@@ -3,6 +3,24 @@ const axios = require('axios');
 const config = require('../../../config');
 const getCookies = require('../utils/getCookies');
 
+async function getCollectionsForDatabase (state, cookies, databaseName) {
+  const result = await axios(`/databases/${databaseName}/collections`, {
+    method: 'get',
+    headers: {
+      'X-Session-Id': cookies.sessionId,
+      'X-Session-Secret': cookies.sessionSecret
+    },
+    baseURL: config.apiServerUrl,
+    validateStatus: status => status < 500 && true
+  });
+
+  const databaseRecordInState = state.databases.find(db => db.name === databaseName);
+  result.data.forEach(collection => {
+    collection.databaseName = databaseName;
+  });
+  mutate.set(databaseRecordInState, 'collections', result.data);
+}
+
 module.exports = function (state) {
   async function getDatabases () {
     const cookies = getCookies();
@@ -16,6 +34,10 @@ module.exports = function (state) {
         },
         baseURL: config.apiServerUrl,
         validateStatus: status => status < 500 && true
+      });
+
+      result.data.forEach(db => {
+        getCollectionsForDatabase(state, cookies, db.name);
       });
 
       let totalReads = 0;
@@ -57,6 +79,7 @@ module.exports = function (state) {
   }
 
   return {
+    ...require('./logs')(state),
     getDatabases,
     createDatabase
   };

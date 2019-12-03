@@ -45,15 +45,15 @@ function createMenuItem (app) {
 
 module.exports = function (app) {
   return fastn('header', { class: 'site-header' },
-    fastn('div', {class:'collapsable', tabindex: 0},
-      fastn('div', {class: 'collapsable-expand', innerHTML: '&#9776;'}),
+    fastn('div', { class: 'collapsable', tabindex: 0 },
+      fastn('div', { class: 'collapsable-expand', innerHTML: '&#9776;' }),
 
       fastn('a', {
         href: '/',
         class: 'logo'
       }, 'bitabase'),
 
-      fastn('div', {class: 'burger-menu'},
+      fastn('div', { class: 'burger-menu' },
         fastn('ul:list', {
           class: 'left',
           items: menuItems(app).left,
