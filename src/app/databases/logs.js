@@ -20,7 +20,7 @@ module.exports = function (state) {
     mutate.set(state, 'activeLogs', {
       databaseName: collection.databaseName,
       collectionName: collection.collectionName,
-      result
+      data: result.data
     });
   }
 
