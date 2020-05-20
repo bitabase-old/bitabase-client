@@ -23,7 +23,7 @@
     "fastn": "^2.12.3",
     "laidout": "^1.1.0",
     "on-url-change": "^1.0.2",
-    "spath": "^1.0.1"
+    "spath": "^1.2.0"
   },
   "devDependencies": {
     "envify": "^4.1.0",
