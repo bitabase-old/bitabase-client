@@ -8,7 +8,7 @@ const notFoundPage = require('./pages/notFound');
 const createDatabasePage = require('./pages/createDatabase');
 
 const spath = require('spath');
-document.addEventListener('click', spath.pushStateAnchors);
+document.addEventListener('click', spath.pushStateAnchors());
 
 module.exports = function (app) {
   return fastn('templater', {
