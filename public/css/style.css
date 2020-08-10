@@ -63,14 +63,18 @@ bb-jumbotron ul li {
   margin-bottom: 30px;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 500px) {
   bb-jumbotron ul li {
     display: inline-block;
     vertical-align: top;
-    margin: 0;
-    margin-right: 30px;
-    margin-bottom: 30px;
+    margin: 15px;
     width: 200px;
+  }
+}
+
+@media (min-width: 930px) {
+  bb-jumbotron {
+    margin-top: 0;
   }
 }
 
