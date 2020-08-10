@@ -1,11 +1,4 @@
-const config = {
-  dev: {
-    apiServerUrl: 'http://localhost:8081/v1'
-  },
-
-  production: {
-    apiServerUrl: 'https://api.bitabase.net/v1'
-  }
+module.exports = {
+  docsUrl: process.env.DOCS_URL || 'http://127.0.0.1:8000',
+  blogUrl: process.env.DOCS_URL || 'http://127.0.0.1:8000/blog'
 };
-
-module.exports = config[process.env.NODE_ENV || 'dev'];

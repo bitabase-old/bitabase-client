@@ -1,37 +1,32 @@
 {
-  "name": "bitabase-client",
+  "name": "bitabase-ui",
   "version": "1.0.0",
-  "description": "",
+  "description": "The bitabase cloud ui",
   "main": "index.js",
   "scripts": {
-    "build": "browserify -g uglifyify -t envify -t brfs ./src/index.js --noparse clone > public/index.bundle.js",
-    "watch": "watchify -t envify -t brfs -d -o public/index.bundle.js src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "static ./public -a 0.0.0.0 --spa index.html",
-    "start": "npm-run-all --parallel watch serve"
+    "build": "node_modules/.bin/browserify -g uglifyify -t envify -t brfs ./index.js --noparse clone > public/index.bundle.js",
+    "watch": "node_modules/.bin/watchify -t envify -t brfs -d -o public/index.bundle.js index.js",
+    "serve": "node_modules/.bin/ws -p 9000 -d ./public --spa index.html",
+    "start": "npm run watch & npm run serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "standard": {
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "semistandard": {
     "ignore": [
-      "examples"
+      "index.bundle.js"
     ]
-  },
-  "author": "Mark Wylde",
-  "license": "GPL-3.0",
-  "dependencies": {
-    "axios": "^0.19.2",
-    "date-fp": "^5.0.3",
-    "fastn": "^2.14.4",
-    "laidout": "^1.1.0",
-    "on-url-change": "^1.0.2",
-    "spath": "^2.0.1"
   },
   "devDependencies": {
     "brfs": "^2.0.2",
-    "browserify": "^16.5.1",
+    "browserify": "^16.5.2",
     "envify": "^4.1.0",
-    "node-static": "^0.7.11",
-    "npm-run-all": "^4.1.5",
-    "predator": "^1.0.6",
+    "hyperx": "^2.5.4",
+    "local-web-server": "^4.2.1",
+    "minthril": "^2.0.7",
+    "routemeup": "^1.4.1",
+    "spath": "^2.0.2",
     "uglifyify": "^5.0.2",
     "watchify": "^3.11.1"
   }
