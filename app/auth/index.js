@@ -107,11 +107,19 @@ module.exports = function (app) {
     const result = await axios('/users', {
       method: 'post',
       baseURL: config.apiServerUrl,
-      validateStatus: status => status < 500 && true,
+      validateStatus: () => true,
       data: {
         email,
         password
       }
+    }).catch(error => {
+      console.log(error);
+      return {
+        status: 500,
+        data: {
+          errors: ['Could not connect to server']
+        }
+      };
     });
 
     if (result.status === 200) {
@@ -120,8 +128,8 @@ module.exports = function (app) {
       return;
     }
 
-    state.errors.login = (result.data && result.data.errors) || 'Unknown error';
-    callback && callback(state.errors.login);
+    state.errors.register = (result.data && result.data.errors) || 'Unknown error';
+    callback && callback(state.errors.register);
   }
 
   return {
