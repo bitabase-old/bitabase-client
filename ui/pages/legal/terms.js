@@ -403,7 +403,7 @@ module.exports = function (app, html) {
 
           <p>18.2. Failure to comply with sections 16 and 17 of
           these terms (acceptable use policy) constitutes a material breach of
-          these <a href='/terms'>Terms of Website Use</a> upon which
+          these <a href='/terms'>Terms of Use</a> upon which
           you are permitted to use our site, and may result in our taking all
           or any of the following actions:</p>
           <ul>
@@ -464,8 +464,8 @@ module.exports = function (app, html) {
           moderator, should a concern or difficulty arise.</p>
 
           <h2>21. Trade marks</h2>
-          <p>"bitabase" is a UK registered trade mark registered with Trade Mark Number
-          <a href="http://www.ipo.gov.uk/tmcase/Results/1/UK00003006560">UK00003006560</a>.</p>
+          <p>The name "Bitabase", along with our logo and branding are part of our trade mark and
+          can not be used without prior written consent.</p>
 
           <h2>22. Applicable law</h2>
           <p>These terms of use, its subject matter and its formation (and any non-contractual
