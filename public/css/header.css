@@ -10,6 +10,10 @@
   padding-right: 7px;
 }
 
+.user a {
+  color: white;
+}
+
 .user-buttons {
   display: none;
 }
@@ -102,14 +106,14 @@ nav a,
 
 @media (min-width: 600px) {
   nav {
-    display: inherit;
+    display: initial;
   }
 
   .user {
-    display: inherit;
+    display: initial;
   }
 
   .user-buttons {
-    display: inherit;
+    display: initial;
   }
 }

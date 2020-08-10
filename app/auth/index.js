@@ -1,9 +1,9 @@
-const { mutate } = require('../../fastn');
 const axios = require('axios');
-const config = require('../../../config');
 const getCookies = require('../utils/getCookies');
 
-module.exports = function (state) {
+module.exports = function (app) {
+  const { state, config } = app;
+
   async function sync () {
     const cookies = getCookies();
 
@@ -18,16 +18,19 @@ module.exports = function (state) {
         validateStatus: status => status < 500 && true
       });
 
-      mutate.set(state, 'user', result.data.user);
-      mutate.set(state, 'session', {
+      state.user = result.data.user;
+      state.session = {
         sessionId: cookies.sessionId,
         sessionSecret: cookies.sessionSecret
-      });
+      };
+
+      app.emitStateChanged();
     }
   }
 
   async function login ({ email, password }, callback) {
-    mutate.remove(state, 'errors.login');
+    delete state.errors.login;
+    app.emitStateChanged();
 
     document.cookie = 'sessionId=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = 'sessionSecret=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -35,19 +38,28 @@ module.exports = function (state) {
     const result = await axios('/sessions', {
       method: 'post',
       baseURL: config.apiServerUrl,
-      validateStatus: status => status < 500 && true,
+      validateStatus: () => true,
       data: {
         email,
         password
       }
+    }).catch(error => {
+      console.log(error);
+      return {
+        status: 500,
+        data: {
+          errors: ['Could not connect to server']
+        }
+      };
     });
 
     if (result.status === 200) {
-      mutate.set(state, 'user', result.data.user);
-      mutate.set(state, 'session', {
+      state.user = result.data.user;
+      state.session = {
         sessionId: result.data.sessionId,
         sessionSecret: result.data.sessionSecret
-      });
+      };
+      app.emitStateChanged();
 
       document.cookie = `sessionId=${result.data.sessionId}`;
       document.cookie = `sessionSecret=${result.data.sessionSecret}`;
@@ -58,24 +70,36 @@ module.exports = function (state) {
     }
 
     if (result.status === 401) {
-      mutate.set(state, 'errors.login', ['email and/or password was wrong']);
+      state.errors.login = ['email and/or password was wrong'];
+      app.emitStateChanged();
       callback && callback(state.errors.login);
 
       return;
     }
 
-    mutate.set(state, 'errors.login', (result.data && result.data.errors) || 'Unknown error');
+    if (result.status === 422) {
+      state.errors.login = result.data.errors;
+      app.emitStateChanged();
+      callback && callback(state.errors.login);
+
+      return;
+    }
+
+    state.errors.login = (result.data && result.data.errors) || 'Unknown error';
+    app.emitStateChanged();
+
     callback && callback(state.errors.login);
   }
 
   async function register ({ email, password, confirmPassword }, callback) {
-    mutate.remove(state, 'errors.register');
+    delete state.errors.register;
 
     document.cookie = 'sessionId=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = 'sessionSecret=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 
     if (password !== confirmPassword) {
-      mutate.set(state, 'errors.register', ['password and confirmPassword must be the same']);
+      state.errors.register = ['password and confirmPassword must be the same'];
+      app.emitStateChanged();
       callback && callback(state.errors.register);
       return;
     }
@@ -96,7 +120,7 @@ module.exports = function (state) {
       return;
     }
 
-    mutate.set(state, 'errors.login', (result.data && result.data.errors) || 'Unknown error');
+    state.errors.login = (result.data && result.data.errors) || 'Unknown error';
     callback && callback(state.errors.login);
   }
 

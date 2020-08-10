@@ -1,27 +1,28 @@
-const { mutate } = require('../../fastn');
 const axios = require('axios');
-const config = require('../../../config');
 const getCookies = require('../utils/getCookies');
 
-async function getCollectionsForDatabase (state, cookies, databaseName) {
+async function getCollectionsForDatabase (app, cookies, databaseName) {
   const result = await axios(`/databases/${databaseName}/collections`, {
     method: 'get',
     headers: {
       'X-Session-Id': cookies.sessionId,
       'X-Session-Secret': cookies.sessionSecret
     },
-    baseURL: config.apiServerUrl,
+    baseURL: app.config.apiServerUrl,
     validateStatus: status => status < 500 && true
   });
 
-  const databaseRecordInState = state.databases.find(db => db.name === databaseName);
+  const databaseRecordInState = app.state.databases.find(db => db.name === databaseName);
   result.data.forEach(collection => {
     collection.databaseName = databaseName;
   });
-  mutate.set(databaseRecordInState, 'collections', result.data);
+  databaseRecordInState.collections = result.data;
+  app.emitStateChanged();
 }
 
-module.exports = function (state) {
+module.exports = function (app) {
+  const { config, state } = app;
+
   async function getDatabases () {
     const cookies = getCookies();
 
@@ -37,7 +38,7 @@ module.exports = function (state) {
       });
 
       result.data.forEach(db => {
-        getCollectionsForDatabase(state, cookies, db.name);
+        getCollectionsForDatabase(config, state, cookies, db.name);
       });
 
       let totalReads = 0;
@@ -47,15 +48,17 @@ module.exports = function (state) {
         totalWrites = totalWrites + database.total_writes;
       });
 
-      mutate.set(state, 'stats', { totalReads, totalWrites });
+      state.stats = { totalReads, totalWrites };
+      state.databases = result.data;
 
-      mutate.set(state, 'databases', result.data);
+      app.emitStateChanged();
     }
   }
 
   async function createDatabase (data, callback) {
     const cookies = getCookies();
-    mutate.remove(state, 'errors.createDatabase');
+    delete state.errors.createDatabase;
+    app.emitStateChanged();
 
     const result = await axios('/databases', {
       method: 'post',
@@ -71,9 +74,8 @@ module.exports = function (state) {
     if (result.status === 201) {
       callback && callback(null, result.data);
     } else {
-      mutate.set(state, 'errors.createDatabase',
-        (result.data && result.data.errors) || 'Unknown error'
-      );
+      state.errors.createDatabase = (result.data && result.data.errors) || 'Unknown error';
+      app.emitStateChanged();
       callback && callback(result.data);
     }
   }

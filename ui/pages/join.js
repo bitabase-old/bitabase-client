@@ -1,7 +1,44 @@
 const menu = require('../components/menu');
 const footer = require('../components/footer');
+const setPath = require('spath/setPath');
 
 module.exports = function (app, html) {
+  function register (event) {
+    event.preventDefault();
+    app.state.joinLoading = true;
+    app.emitStateChanged();
+
+    app.auth.register({
+      email: event.target.querySelector('[name="email"]').value,
+      password: event.target.querySelector('[name="password"]').value,
+      confirmPassword: event.target.querySelector('[name="confirmPassword"]').value
+    }, function (error, result) {
+      app.state.registerLoading = false;
+      app.emitStateChanged();
+
+      if (error) {
+        if (Array.isArray(error)) {
+          document.querySelector('[autofocus]').focus();
+          document.querySelector('[autofocus]').select();
+        } else {
+          document.querySelector(`[name="${Object.keys(error)[0]}"]`).focus();
+          document.querySelector(`[name="${Object.keys(error)[0]}"]`).select();
+        }
+        return;
+      }
+
+      setPath('/');
+    });
+  }
+
+  function createErrorField (namespace, fieldKey) {
+    if (app.state.errors && app.state.errors[namespace] && app.state.errors[namespace][fieldKey]) {
+      return html`
+        <div class="form-field-error">${app.state.errors[namespace][fieldKey]}</div>
+      `;
+    }
+  }
+
   return html`
     <main class="wow">
       ${menu(app, html)}
@@ -17,28 +54,33 @@ module.exports = function (app, html) {
             <p>
               Complete the small form below to create your free account.
             </p>
-            <form class="form">
-              <div class="form-error" style="display: none;">
-                You have not been logged in:
-              </div>
+            <form class="form" onsubmit=${register}>
+              ${Array.isArray(app.state.errors.register) ? html`
+                <div class="form-error">
+                  ${app.state.errors.register.join(', ')}
+                </div>
+              ` : undefined}
 
               <div class="form-field">
                 <label for="email">Email Address</label>
-                <input id="email" type="email" autofocus />
+                ${createErrorField('register', 'email')}
+                <input id="email" name="email" type="email" ${'required'} ${app.state.registerLoading && 'disabled'} autofocus />
               </div>
             
               <div class="form-field">
                 <label for="password">Password</label>
-                <input id="password" type="password" />
+                ${createErrorField('register', 'password')}
+                <input id="password" name="password" type="password" ${'required'} ${app.state.registerLoading && 'disabled'} />
               </div>
 
               <div class="form-field">
-                <label for="confirm_password">Confirm Password</label>
-                <input id="confirm_password" type="confirm_password" />
+                <label for="confirmPassword">Confirm Password</label>
+                ${createErrorField('register', 'confirmPassword')}
+                <input id="confirmPassword" name="confirmPassword" type="password" ${'required'} ${app.state.registerLoading && 'disabled'} />
               </div>
             
               <div class="form-field">
-                <button type="login" class="button primary">Create your account</button>
+                <button id="registerButton" type="submit" class="button primary ${app.state.registerLoading && 'loading'}" ${app.state.registerLoading && 'disabled'}>Create Account</button>
               </div>
             </form>
           </div>

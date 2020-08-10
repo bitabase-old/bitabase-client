@@ -1,9 +1,7 @@
-const { mutate } = require('../../fastn');
 const axios = require('axios');
-const config = require('../../../config');
 const getCookies = require('../utils/getCookies');
 
-module.exports = function (state) {
+module.exports = function (app) {
   async function switchLogs (collection) {
     const cookies = getCookies();
 
@@ -13,19 +11,22 @@ module.exports = function (state) {
         'X-Session-Id': cookies.sessionId,
         'X-Session-Secret': cookies.sessionSecret
       },
-      baseURL: config.apiServerUrl,
+      baseURL: app.config.apiServerUrl,
       validateStatus: status => status < 500 && true
     });
 
-    mutate.set(state, 'activeLogs', {
+    app.state.activeLogs = {
       databaseName: collection.databaseName,
       collectionName: collection.collectionName,
       data: result.data
-    });
+    };
+
+    app.emitStateChanged();
   }
 
   function clearLogs () {
-    mutate.set(state, 'activeLogs', null);
+    app.state.activeLogs = null;
+    app.emitStateChanged();
   }
 
   return {

@@ -1,7 +1,8 @@
 const EventEmitter = require('events');
 const routemeup = require('routemeup');
 
-const config = require('../config')
+const authModule = require('./auth');
+const databasesModule = require('./databases');
 
 const routes = {
   '/': () => 'home',
@@ -21,6 +22,8 @@ module.exports = function (config) {
   const state = {};
 
   function changeUrl () {
+    state.errors = {};
+
     const route = routemeup(routes, { url: window.location.pathname });
 
     state.page = route ? route.controller() : 'notFound';
@@ -35,7 +38,7 @@ module.exports = function (config) {
     eventEmitter.emit('stateChanged');
   }
 
-  return {
+  const app = {
     config,
 
     state,
@@ -43,7 +46,15 @@ module.exports = function (config) {
 
     changeUrl,
 
+    loading: 0,
+
     on: eventEmitter.addListener.bind(eventEmitter),
     off: eventEmitter.removeListener.bind(eventEmitter)
   };
+
+  app.database = databasesModule(app);
+  app.auth = authModule(app);
+  app.auth.sync();
+
+  return app;
 };
