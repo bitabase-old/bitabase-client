@@ -340,17 +340,17 @@ module.exports = function (app, html) {
           <p>16.1. You may use our site only for lawful purposes.</p>
           <p>16.2. You may not use our site:</p>
           <ul>
-              <li>In any way that breaches any applicable local, national or international law or regulation.</li>
-              <li>In any way that is unlawful or fraudulent, or has any unlawful or fraudulent purpose or effect.</li>
-              <li>For the purpose of harming or attempting to harm minors in any way.</li>
-              <li>To send, knowingly receive, upload, download, use or re-use any material which does not comply
-              with our content standards as set out in Clause [] below.</li>
-              <li>To transmit, or procure the sending of, any unsolicited or unauthorised advertising or
-              promotional material or any other form of similar solicitation (spam).</li>
-              <li>To knowingly transmit any data, send or upload any material that contains viruses, Trojan horses,
-              worms, time-bombs, keystroke loggers, spyware, adware or any other
-              harmful programs or similar computer code designed to adversely
-              affect the operation of any computer software or hardware.</li>
+            <li><p>In any way that breaches any applicable local, national or international law or regulation.</p></li>
+            <li><p>In any way that is unlawful or fraudulent, or has any unlawful or fraudulent purpose or effect.</p></li>
+            <li><p>For the purpose of harming or attempting to harm minors in any way.</p></li>
+            <li><p>To send, knowingly receive, upload, download, use or re-use any material which does not comply
+            with our content standards as set out in Clause [] below.</p></li>
+            <li><p>To transmit, or procure the sending of, any unsolicited or unauthorised advertising or
+            promotional material or any other form of similar solicitation (spam).</p></li>
+            <li><p>To knowingly transmit any data, send or upload any material that contains viruses, Trojan horses,
+            worms, time-bombs, keystroke loggers, spyware, adware or any other
+            harmful programs or similar computer code designed to adversely
+            affect the operation of any computer software or hardware.</p></li>
           </ul>
 
           <p>16.3. You also agree:</p>
