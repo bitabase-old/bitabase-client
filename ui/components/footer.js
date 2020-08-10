@@ -17,12 +17,13 @@ module.exports = function (app, html) {
           <strong>Documentation</strong>
           <ul>
             <li><a target="_blank" href="https://docs.bitabase.com">Developer Portal</a></li>
-            <li><a target="_blank" href="https://docs.bitabase.com/docs/api/introduction">API Reference</a></li>
+            <li><a target="_blank" href="https://docs.bitabase.com/api/entities/databases">API Reference</a></li>
           </ul>
         </div>
         <div>
           <strong>Links</strong>
           <ul>
+            <li><a target="_blank" href="https://docs.bitabase.com/blog">Blog</a></li>
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/contact">Contact Us</a></li>
             <li><a target="_blank" href="https://github.com/bitabase">Github Profile</a></li>

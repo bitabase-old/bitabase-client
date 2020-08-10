@@ -173,8 +173,7 @@ button:not(:disabled).primary:hover {
 
 .container {
   margin: auto;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding: 25px;
   max-width: 970px;
   min-height: calc(100vh - 294px);
 }
