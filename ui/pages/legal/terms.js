@@ -219,12 +219,12 @@ module.exports = function (app, html) {
           <p>11.2. Nothing in these Terms limit or exclude our liability for:</p>
 
           <ul>
-              <li>death or personal injury caused by our negligence;</li>
-              <li>fraud or fraudulent misrepresentation;</li>
-              <li>breach of the terms implied by section 12 of
-          the Sale of Goods Act 1979 (title and quiet possession); or</li>
-              <li>defective products under the Consumer
-          Protection Act 1987.</li>
+              <li><p>death or personal injury caused by our negligence;</p></li>
+              <li><p>fraud or fraudulent misrepresentation;</p></li>
+              <li><p>breach of the terms implied by section 12 of
+          the Sale of Goods Act 1979 (title and quiet possession); or</p></li>
+              <li><p>defective products under the Consumer
+          Protection Act 1987.</p></li>
           </ul>
 
           <p>11.3. Subject to clause 11.2, we will under no circumstances whatever be liable to
@@ -233,12 +233,12 @@ module.exports = function (app, html) {
           Contract for:</p>
 
           <ul>
-              <li>any loss of profits, sales, business, or revenue;</li>
-              <li>loss or corruption of data, information or software;</li>
-              <li>loss of business opportunity;</li>
-              <li>loss of anticipated savings;</li>
-              <li>loss of goodwill; or</li>
-              <li>any indirect or consequential loss.</li>
+              <li><p>any loss of profits, sales, business, or revenue;</p></li>
+              <li><p>loss or corruption of data, information or software;</p></li>
+              <li><p>loss of business opportunity;</p></li>
+              <li><p>loss of anticipated savings;</p></li>
+              <li><p>loss of goodwill; or</p></li>
+              <li><p>any indirect or consequential loss.</p></li>
           </ul>
 
           <p>11.4. Subject to clause 11.2 and clause 11.3 , our
