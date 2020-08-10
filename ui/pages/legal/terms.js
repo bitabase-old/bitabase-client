@@ -81,8 +81,8 @@ module.exports = function (app, html) {
           the following circumstances:   
           </p>
           <ul>
-              <li type='a'><p>changes in how we accept payment from you; and</p></li>
-              <li type='a'><p>changes in relevant laws and regulatory requirements.</p></li>
+              <li><p>changes in how we accept payment from you; and</p></li>
+              <li><p>changes in relevant laws and regulatory requirements.</p></li>
           </ul>
 
           <p>4.2. Every time you order Products from us, the
@@ -188,10 +188,10 @@ module.exports = function (app, html) {
           <p>9.1. You can only pay for Products using a debit
           card or credit card. We accept the following cards: </p>
           <ul>
-              <li type='a'>Mastercard;</li>
-              <li type='a'>Maestro;</li>
-              <li type='a'>Solo; and</li>
-              <li type='a'>Visa, Visa Debit and Visa Electron.</li>
+              <li>Mastercard;</li>
+              <li>Maestro;</li>
+              <li>Solo; and</li>
+              <li>Visa, Visa Debit and Visa Electron.</li>
           </ul>
 
           <p>9.2. Please note that all payment transactions will
@@ -218,12 +218,12 @@ module.exports = function (app, html) {
 
           <p>11.2. Nothing in these Terms limit or exclude our liability for:</p>
 
-          <ul type='a'>
-              <li type='a'>death or personal injury caused by our negligence;</li>
-              <li type='a'>fraud or fraudulent misrepresentation;</li>
-              <li type='a'>breach of the terms implied by section 12 of
+          <ul>
+              <li>death or personal injury caused by our negligence;</li>
+              <li>fraud or fraudulent misrepresentation;</li>
+              <li>breach of the terms implied by section 12 of
           the Sale of Goods Act 1979 (title and quiet possession); or</li>
-              <li type='a'>defective products under the Consumer
+              <li>defective products under the Consumer
           Protection Act 1987.</li>
           </ul>
 
@@ -233,14 +233,12 @@ module.exports = function (app, html) {
           Contract for:</p>
 
           <ul>
-              <li type='a'>any loss of profits, sales, business, or
-          revenue;</li>
-              <li type='a'>loss or corruption of data, information or
-          software;</li>
-              <li type='a'>loss of business opportunity;</li>
-              <li type='a'>loss of anticipated savings;</li>
-              <li type='a'>loss of goodwill; or</li>
-              <li type='a'>any indirect or consequential loss.</li>
+              <li>any loss of profits, sales, business, or revenue;</li>
+              <li>loss or corruption of data, information or software;</li>
+              <li>loss of business opportunity;</li>
+              <li>loss of anticipated savings;</li>
+              <li>loss of goodwill; or</li>
+              <li>any indirect or consequential loss.</li>
           </ul>
 
           <p>11.4. Subject to clause 11.2 and clause 11.3 , our
@@ -276,9 +274,9 @@ module.exports = function (app, html) {
           that affects the performance of our obligations under a Contract:</p>
 
           <ul>
-              <li type='a'>we will contact you as soon as reasonably
+              <li>we will contact you as soon as reasonably
           possible to notify you; and</li>
-              <li type='a'>our obligations under a Contract will be
+              <li>our obligations under a Contract will be
           suspended and the time for performance of our obligations will be
           extended for the duration of the Event Outside Our Control. Where the
           Event Outside Our Control affects our delivery of Products to you, we
@@ -322,7 +320,7 @@ module.exports = function (app, html) {
           part where none exists.</p>
 
           <p>15.3. You must not establish a link to our site in
-          any website that is not owned by you. </p>
+          any website that is not owned by you.</p>
 
           <p>15.4. Our site must not be framed on any other
           site, nor may you create a link to any part of our site other than
@@ -342,22 +340,14 @@ module.exports = function (app, html) {
           <p>16.1. You may use our site only for lawful purposes.</p>
           <p>16.2. You may not use our site:</p>
           <ul>
-              <li>In any way that
-              breaches any applicable local, national or international law or
-              regulation.</li>
-              <li>In any way that is unlawful or
-              fraudulent, or has any unlawful or fraudulent purpose or effect.</li>
-              <li>For the purpose of harming or
-              attempting to harm minors in any way.</li>
-              <li>To send, knowingly receive,
-              upload, download, use or re-use any material which does not comply
+              <li>In any way that breaches any applicable local, national or international law or regulation.</li>
+              <li>In any way that is unlawful or fraudulent, or has any unlawful or fraudulent purpose or effect.</li>
+              <li>For the purpose of harming or attempting to harm minors in any way.</li>
+              <li>To send, knowingly receive, upload, download, use or re-use any material which does not comply
               with our content standards as set out in Clause [] below.</li>
-              <li>To transmit, or procure the
-              sending of, any unsolicited or unauthorised advertising or
-              promotional material or any other form of similar solicitation
-              (spam).</li>
-              <li>To knowingly transmit any data,
-              send or upload any material that contains viruses, Trojan horses,
+              <li>To transmit, or procure the sending of, any unsolicited or unauthorised advertising or
+              promotional material or any other form of similar solicitation (spam).</li>
+              <li>To knowingly transmit any data, send or upload any material that contains viruses, Trojan horses,
               worms, time-bombs, keystroke loggers, spyware, adware or any other
               harmful programs or similar computer code designed to adversely
               affect the operation of any computer software or hardware.</li>
@@ -365,20 +355,21 @@ module.exports = function (app, html) {
 
           <p>16.3. You also agree:</p>
           <ul>
-              <li><p>Not to reproduce, duplicate, copy or re-sell any part of our site.</p></li>
-              <li><p>Not to access without authority, interfere with, damage or disrupt:</p></li>
-              <li><p>any part of our site;</p></li>
-              <li><p>any equipment or network on which our site is stored;</p></li>
-              <li><p>any software used in the provision of our site; or </p></li>
-              <li><p>any equipment or network or software owned or used by any third party.</p></li>
+              <li><p>Not to reproduce, duplicate, copy or re-sell any part of our site not covered by an open source license.</p></li>
+              <li><p>Not to access without authority, interfere with, damage or disrupt:</p>
+                <ul>
+                  <li><p>any part of our site;</p></li>
+                  <li><p>any equipment or network on which our site is stored;</p></li>
+                  <li><p>any software used in the provision of our site; or </p></li>
+                  <li><p>any equipment or network or software owned or used by any third party.</p></li>
+                </ul>
+              </li>
           </ul>
 
           <h2>17. Content standards</h2>
-          <p>17.1. These content standards apply to any and all
-          material which you contribute to our site, and
+          <p>17.1. These content standards apply to any and all material which you contribute to our site, and
           to any interactive services associated with it. </p>
-          <p>17.2. You must comply with the spirit of the
-          following standards as well as the letter. The standards apply to
+          <p>17.2. You must comply with the spirit of the following standards as well as the letter. The standards apply to
           each part of any contribution as well as to its whole.</p>
           <p>17.3. Contributions must:</p>
           <ul>
@@ -389,20 +380,19 @@ module.exports = function (app, html) {
 
           <p>17.4. Contributions must not:</p>
           <ul>
+              <li><p>Contain any material which is illegal.</p></li>
               <li><p>Contain any material which is defamatory of any person.</p></li>
-              <li><p>Contain any material which is obscene, offensive, hateful or inflammatory.</p></li>
-              <li><p>Promote sexually explicit material.</p></li>
               <li><p>Promote violence.</p></li>
-              <li><p>Promote discrimination based on race, sex, religion, nationality, disability, sexual orientation or age.</p></li>
+              <li><p>Promote discrimination, such as, but not limited to, race, sex, religion, nationality, disability, sexual orientation or age.</p></li>
               <li><p>Infringe any copyright, database right or trade mark of any other person.</p></li>
               <li><p>Be likely to deceive any person.</p></li>
               <li><p>Be made in breach of any legal duty owed to a third party, such as a contractual duty or a duty of confidence.</p></li>
               <li><p>Promote any illegal activity.</p></li>
-              <li><p>Be threatening, abuse or invade another&rsquo;s privacy, or cause annoyance, inconvenience or needless anxiety.</p></li>
-              <li><p>Be likely to harass, upset, embarrass, alarm or annoy any other person.</p></li>
+              <li><p>Be threatening, abusive or invade another's privacy.</p></li>
+              <li><p>Be likely to harass any other person.</p></li>
               <li><p>Be used to impersonate any person, or to misrepresent your identity or affiliation with any person.</p></li>
               <li><p>Give the impression that they emanate from us, if this is not the case.</p></li>
-              <li><p>Advocate, promote or assist any unlawful act such as (by way of example only) copyrightinfringement or computer misuse.</p></li>
+              <li><p>Advocate, promote or assist any unlawful act such as (by way of example only) copyright infringement or computer misuse.</p></li>
           </ul>
 
           <h2>18. Suspension and termination</h2>
@@ -428,7 +418,7 @@ module.exports = function (app, html) {
           </ul>
 
           <p>18.3. We exclude liability for actions taken in
-          response to breaches of this acceptable use policy.  The responses
+          response to breaches of this acceptable use policy. The responses
           described in this policy are not limited, and we may take any other
           action we reasonably deem appropriate.</p>
 
