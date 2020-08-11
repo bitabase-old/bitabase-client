@@ -59,7 +59,7 @@ h2 {
 header {
   height: 50px;
   white-space: nowrap;
-  overflow-x: scroll;
+  overflow-x: auto;
   align-items: center;
   background: rgb(110,13,71);
   background: linear-gradient(90deg, rgba(110,13,71,1) 0%, rgba(49,9,121,1) 100%);
